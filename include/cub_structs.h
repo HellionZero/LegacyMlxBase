@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 15:08:39 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/17 16:38:47 by lsarraci         ###   ########.fr       */
+/*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
+/*   Updated: 2026/04/17 16:14:47 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub.h"
+#ifndef CUB_STRUCTS_H
+# define CUB_STRUCTS_H
 
-int	main(void)
+typedef struct s_window t_window;
+typedef struct s_game	t_game;
+
+struct s_window
 {
-	t_game	*game;
+	void	*mlx_ptr;
+	void	*win_ptr;
+};
 
-	game = malloc(sizeof(t_game));
-	if (!game)
-	{
-		fprintf(stderr, "Failed to initialize game\n");
-		return (1);
-	}
-	game->window = create_window(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D");
-	if (!game->window)
-	{
-		free(game);
-		return (1);
-	}
-	setup_hooks(game);
-	mlx_loop(game->window->mlx_ptr);
-}
+struct s_game
+{
+	t_window	*window;
+};
+
+#endif

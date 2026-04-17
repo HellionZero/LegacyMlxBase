@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/17 15:27:40 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/17 16:28:17 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,14 @@ MLX_DIR = $(LIB_DIR)/minilibx-linux
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-INCLUDE = -I$(LIBFT_DIR) -I$(LIB_DIR)/$(MLX_DIR)
+INCLUDE = -I$(LIBFT_DIR) -I$(LIB_DIR)/$(MLX_DIR) -Iinclude
 MLX_LINK = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX = $(MLX_DIR)/libmlx.a
 
 SRC = main.c \
 	  hooks.c \
+	  window.c \
 
 RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
@@ -61,6 +62,9 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+valgrind:
+	valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --suppressions=.valgrind.supp ./$(NAME)
 
 .PHONY: all clean fclean re
 
