@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:49 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/17 16:47:14 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/17 17:48:02 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include <mlx.h>
+# include "../lib/libft/libft.h"
+# include "../lib/minilibx-linux/mlx.h"
 # include "cub_structs.h"
 
 int 		handle_key_press(int keycode, void *param);
