@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:49 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/17 17:48:02 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/18 16:17:55 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int 		handle_close(void *param);
 t_window	*create_window(int width, int height, char *title);
 void 		close_window(void *param);
 void 		setup_hooks(void *param);
+void		free_game(t_game *game);
 
 #endif

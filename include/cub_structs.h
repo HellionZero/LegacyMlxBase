@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/17 16:14:47 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/18 16:02:50 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ struct s_window
 struct s_game
 {
 	t_window	*window;
+	void		*mlx;
 };
 
 #endif

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_int_get_visual.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/17 17:52:07 by lsarraci          #+#    #+#             */
+/*   Updated: 2026/04/17 17:52:15 by lsarraci         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /*
 ** mlx_int_get_visual.c for MinilibX in 
 ** 
@@ -7,8 +19,6 @@
 ** Started on  Wed Oct  3 17:01:51 2001 Charlie Root
 ** Last update Thu Oct  4 15:00:45 2001 Charlie Root
 */
-
-
 
 #include	"mlx_int.h"
 

@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:24:35 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/17 16:46:50 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/18 16:09:43 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	close_window(void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	free(game->window);
-	free(game);
+	free_game(game);
 	exit(0);
 }
 
