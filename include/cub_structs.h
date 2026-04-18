@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/18 17:25:58 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/18 17:49:02 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ struct s_window
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_data	*img_ptr;
 };
 
 struct s_game
