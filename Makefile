@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/18 16:12:15 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/18 17:29:52 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = main.c \
 
 RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
+	   $(RENDER_DIR)/pixel.c \
 
 SRC := $(addprefix $(SRCS_DIR)/, $(SRC))
 

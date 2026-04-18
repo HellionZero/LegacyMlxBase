@@ -1,13 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   cub_render.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/17 15:19:29 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/18 16:24:33 by lsarraci         ###   ########.fr       */
+/*   Created: 2026/04/18 17:26:20 by lsarraci          #+#    #+#             */
+/*   Updated: 2026/04/18 17:29:31 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub.h"
+#ifndef CUB_RENDER_H
+# define CUB_RENDER_H
+
+# include "cub_structs.h"
+
+void	mlx_put_pixel(t_data *data, int x, int y, int color);
+
+#endif
