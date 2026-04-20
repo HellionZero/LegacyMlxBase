@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 14:48:15 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 15:18:17 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/20 15:33:38 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,48 @@ void	draw_rectangle(t_data *data, t_icoord pos, t_dim dim, int color)
 			i++;
 		}
 		j++;
+	}
+}
+
+void	draw_circle(t_data *data, t_icoord center, int radius, int color)
+{
+	int	x;
+	int	y;
+	int	err;
+
+	x = radius;
+	y = 0;
+	err = 0;
+	while (x >= y)
+	{
+		mlx_put_pixel(data, center.x + x, center.y + y, color);
+		mlx_put_pixel(data, center.x + y, center.y + x, color);
+		mlx_put_pixel(data, center.x - y, center.y + x, color);
+		mlx_put_pixel(data, center.x - x, center.y + y, color);
+		mlx_put_pixel(data, center.x - x, center.y - y, color);
+		mlx_put_pixel(data, center.x - y, center.y - x, color);
+		mlx_put_pixel(data, center.x + y, center.y - x, color);
+		mlx_put_pixel(data, center.x + x, center.y - y, color);
+		y++;
+		err += 1 + 2 * y;
+		if (2 * (err - x) + 1 > 0)
+		{
+			x--;
+			err += 1 - 2 * x;
+		}
+	}
+}
+
+void	draw_polygon(t_data *data, t_icoord *points, int num_points, int color)
+{
+	int	i;
+
+	if (num_points < 2)
+		return ;
+	i = 0;
+	while (i < num_points)
+	{
+		draw_line(data, points[i], points[(i + 1) % num_points], color);
+		i++;
 	}
 }

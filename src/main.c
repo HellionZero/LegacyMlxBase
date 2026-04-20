@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:39 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/18 18:19:00 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/20 15:49:12 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	main(void)
 		free_game(game);
 		return (1);
 	}
+	init_timer(&game->timer);
 	setup_hooks(game);
 	mlx_loop(game->window->mlx_ptr);
 	free_game(game);
