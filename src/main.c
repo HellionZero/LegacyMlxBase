@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:39 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/18 18:14:22 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/18 18:19:00 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ void	free_game(t_game *game)
 	{
 		if (game->window)
 		{
+			if (game->window->img_ptr)
+				free_pixel_data(game->window->img_ptr,
+					game->window->mlx_ptr);
 			if (game->window->win_ptr)
 				mlx_destroy_window(game->window->mlx_ptr,
 					game->window->win_ptr);

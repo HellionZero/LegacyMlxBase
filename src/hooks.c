@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:24:35 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/18 16:09:43 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/20 14:44:01 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ void	setup_hooks(void *param)
 	game = (t_game *)param;
 	mlx_hook(game->window->win_ptr, 2, 1L << 0, handle_key_press, game);
 	mlx_hook(game->window->win_ptr, 17, 0, handle_close, game);
+	mlx_loop_hook(game->window->mlx_ptr, render, game);
 }
