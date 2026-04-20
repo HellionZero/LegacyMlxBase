@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 14:48:15 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 15:33:38 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/20 17:04:54 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,16 @@ void	draw_line(t_data *data, t_icoord start, t_icoord end, int color)
 	}
 }
 
-void	draw_rectangle(t_data *data, t_icoord pos, t_dim dim, int color)
+t_rectangle	draw_rectangle(t_data *data, t_icoord pos, t_dim dim, int color)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
+	t_rectangle	rect;
 
+	rect.pos = pos;
+	rect.dim = dim;
+	rect.color = color;
+	calculate_pivot_points(&rect);
 	j = pos.y;
 	while (j < pos.y + dim.height)
 	{
@@ -57,6 +62,7 @@ void	draw_rectangle(t_data *data, t_icoord pos, t_dim dim, int color)
 		}
 		j++;
 	}
+	return (rect);
 }
 
 void	draw_circle(t_data *data, t_icoord center, int radius, int color)

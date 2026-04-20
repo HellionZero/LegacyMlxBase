@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:49 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 15:46:42 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/20 17:07:01 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "cub_types.h"
 # include "cub_utils.h"
 # include "cub_render.h"
+# include "cub_debug.h"
 
 int			handle_key_press(int keycode, void *param);
 int			handle_close(void *param);

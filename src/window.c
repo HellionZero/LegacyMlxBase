@@ -90,5 +90,11 @@ t_window	*create_window(int width, int height, char *title)
 		return (NULL);
 	}
 	initialize_window_data(window, width, height, title);
+	if (!window->img_ptr || !window->win_ptr)
+	{
+		ft_putstr_fd("Failed to initialize window properly\n", 2);
+		free(window);
+		return (NULL);
+	}
 	return (window);
 }

@@ -1,21 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_utils.h                                        :+:      :+:    :+:   */
+/*   layer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 15:44:58 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 17:36:59 by lsarraci         ###   ########.fr       */
+/*   Created: 2026/04/20 17:20:34 by lsarraci          #+#    #+#             */
+/*   Updated: 2026/04/20 17:20:47 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_UTILS_H
-# define CUB_UTILS_H
-
-# include "cub_structs.h"
-
-void	init_timer(t_timer *timer);
-void	update_timer(t_timer *timer);
-
-#endif
+#include "../../include/cub.h"

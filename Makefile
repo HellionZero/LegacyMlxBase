@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/20 15:46:14 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/20 17:11:50 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,16 @@ SRC = main.c \
 	  hooks.c \
 	  window.c \
 
+DEBUG_DIR = debug
+SRC += $(DEBUG_DIR)/map_debug.c \
+
 RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
 	   $(RENDER_DIR)/pixel.c \
 	   $(RENDER_DIR)/shapes.c \
 	   $(RENDER_DIR)/render_utils.c \
+	   $(RENDER_DIR)/eight_path.c \
+	   $(RENDER_DIR)/texture.c \
 
 UTILS_DIR = utils
 SRC += $(UTILS_DIR)/time_utils.c \

@@ -6,19 +6,24 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 15:54:54 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/20 18:35:27 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_STRUCTS_H
 # define CUB_STRUCTS_H
 
-typedef struct s_window	t_window;
-typedef struct s_game	t_game;
-typedef struct s_data	t_data;
-typedef struct s_icoord	t_icoord;
-typedef struct s_timer	t_timer;
-typedef struct s_dim	t_dim;
+# include "cub_types.h"
+
+typedef struct s_render_cfg	t_render_cfg;
+typedef struct s_window		t_window;
+typedef struct s_game		t_game;
+typedef struct s_map		t_map;
+typedef struct s_data		t_data;
+typedef struct s_rectangle	t_rectangle;
+typedef struct s_sprite		t_sprite;
+typedef struct s_image		t_image;
+typedef struct s_timer		t_timer;
 
 /*
 img: pointer to the image created by mlx_new_image
@@ -61,6 +66,47 @@ struct s_timer
 	float			delta_time;
 };
 
+struct s_image
+{
+	void	*img_ptr;
+	char	*path;
+	char	*addr;
+	t_data	data;
+	t_dim	dim;
+};
+
+struct s_render_cfg
+{
+	float	fog_distance;
+	float	light_intensity;
+	float	shadow_factor;
+	int		max_render_distance;
+	int		render_quality;
+};
+
+struct s_map
+{
+	char	**grid;
+	t_dim	dim;
+};
+
+struct s_rectangle
+{
+	t_icoord	pos;
+	t_dim		dim;
+	int			color;
+	t_icoord	points[9];
+};
+
+struct s_sprite
+{
+	t_icoord	pos;
+	t_dim		dim;
+	t_image		*texture;
+	int			color;
+	int			rotation;
+};
+
 /*
 mlx_ptr: pointer to the MLX instance, 
 used for all MLX operations
@@ -76,8 +122,14 @@ struct s_window
 
 struct s_game
 {
-	t_window	*window;
-	t_timer		timer;
+	t_window		*window;
+	t_timer			timer;
+	t_rectangle		player_rect;
+	t_map			map;
+	t_render_cfg	config;
+	t_image			*wall_texture;
+	t_image			*floor_texture;
+	t_image			*ceiling_texture;
 };
 
 #endif
