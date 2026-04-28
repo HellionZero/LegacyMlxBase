@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/28 17:58:12 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/28 18:43:50 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,11 @@ SRC += $(DEBUG_DIR)/map_debug.c \
 
 ENGINE_DIR = engine
 SRC += $(ENGINE_DIR)/movement.c \
+		$(ENGINE_DIR)/player_ray.c \
 
 INPUT_DIR = input
 SRC += $(INPUT_DIR)/arrows.c \
-
+	   
 RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
 	   $(RENDER_DIR)/minimap_layer.c \
@@ -63,27 +64,38 @@ OBJS = $(SRC:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 all: $(NAME)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	@ echo "Building Libft library..."
+	@$(MAKE) -C $(LIBFT_DIR) > /dev/null
+	@echo "Libft library built successfully."
 
 $(MLX):
-	$(MAKE) -C $(MLX_DIR)
+	@ echo "Building MinilibX library..."
+	@$(MAKE) -C $(MLX_DIR) > /dev/null
+	@echo "MinilibX library built successfully."
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $^ $(MLX_LINK)
+	@echo "Linking object files and libraries to create executable..."
+	@$(CC) $(CFLAGS) $(INCLUDE) -o $@ $^ $(MLX_LINK) > /dev/null
+	@echo "Executable $(NAME) created successfully."
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@ > /dev/null
+	@echo "Compiling $< -> $@"
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
+	@echo "Cleaning MinilibX object files..."
+	@$(MAKE) -C $(MLX_DIR) clean > /dev/null
+	@echo "Cleaning object files..."
 	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(MLX_DIR) clean
+	@$(MAKE) -C $(LIBFT_DIR) fclean > /dev/null
+	@$(MAKE) -C $(MLX_DIR) clean > /dev/null
+	@echo "Cleaning executable..."
 	rm -rf $(NAME)
+	@echo "Cleaned library and executable."
 
 re: fclean all
 

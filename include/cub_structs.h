@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 17:52:00 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 18:27:56 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_minimap	t_minimap;
 typedef struct s_player		t_player;
 typedef struct s_ray		t_ray;
 typedef struct s_data		t_data;
+typedef struct s_line		t_line;
 typedef struct s_rectangle	t_rectangle;
 typedef struct s_sprite		t_sprite;
 typedef struct s_image		t_image;
@@ -52,6 +53,13 @@ struct s_data
 	int		endian;
 	int		width;
 	int		height;
+};
+
+struct t_line
+{
+	t_icoord	start;
+	t_icoord	end;
+	int			color;
 };
 
 /*
@@ -95,6 +103,7 @@ struct s_map
 
 struct s_ray
 {
+	t_data		*data;
 	t_icoord	pos;
 	t_icoord	dir;
 	float		length;
@@ -107,6 +116,7 @@ struct s_player
 	t_dcoord	pos;
 	t_dim		dim;
 	int			color;
+	t_ray		ray;
 };
 
 /* 
