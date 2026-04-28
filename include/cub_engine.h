@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_player.c                                   :+:      :+:    :+:   */
+/*   cub_engine.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 16:34:14 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 18:01:04 by lsarraci         ###   ########.fr       */
+/*   Created: 2026/04/28 17:56:15 by lsarraci          #+#    #+#             */
+/*   Updated: 2026/04/28 17:59:17 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/cub.h"
+#ifndef CUB_ENGINE_H
+# define CUB_ENGINE_H
 
-t_player	*create_player(void)
-{
-	t_player	*player;
+# include "cub_structs.h"
 
-	player = malloc(sizeof(t_player));
-	if (!player)
-		return (NULL);
-	player->pos = (t_dcoord){1.5, 1.5};
-	player->dim = (t_dim){1, 1};
-	player->color = GREEN;
-	return (player);
-}
+int		is_position_walkable(t_map *map, float x, float y);
+void	move_player(t_player *player, t_map *map, float move_step);
+void	strafe_player(t_player *player, t_map *map, float move_step);
+void	set_directional_movement(int keycode, t_player *player, t_game *game);
 
-void	destroy_player(t_player *player)
-{
-	free(player);
-}
+#endif

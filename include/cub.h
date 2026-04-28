@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:49 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 16:48:40 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:59:39 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <math.h>
 # include <sys/time.h>
 # include "../lib/libft/libft.h"
 # include "../lib/minilibx-linux/mlx.h"
@@ -29,6 +30,7 @@
 # include "cub_render.h"
 # include "cub_debug.h"
 # include "cub_input.h"
+# include "cub_engine.h"
 
 int			handle_key_press(int keycode, void *param);
 int			handle_close(void *param);

@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 13:48:03 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 14:36:54 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 18:05:57 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,10 @@ int	is_direction_key(int keycode)
 		|| keycode == KEY_S || keycode == KEY_D);
 }
 
-void	handle_direction_press(int keycode)
+void	handle_direction_press(int keycode, t_player *player, t_game *game)
 {
-	if (keycode == KEY_W)
-		printf("W key pressed\n");
-	else if (keycode == KEY_A)
-		printf("A key pressed\n");
-	else if (keycode == KEY_S)
-		printf("S key pressed\n");
-	else if (keycode == KEY_D)
-		printf("D key pressed\n");
+	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S || keycode == KEY_D)
+		set_directional_movement(keycode, player, game);
 	else
 		handle_arrow_press(keycode);
 }

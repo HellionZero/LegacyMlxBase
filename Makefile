@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/28 16:44:09 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/28 17:58:12 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,12 @@ SRC = main.c \
 DEBUG_DIR = debug
 SRC += $(DEBUG_DIR)/map_debug.c \
 
+ENGINE_DIR = engine
+SRC += $(ENGINE_DIR)/movement.c \
+
+INPUT_DIR = input
+SRC += $(INPUT_DIR)/arrows.c \
+
 RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
 	   $(RENDER_DIR)/minimap_layer.c \
@@ -48,8 +54,7 @@ SRC += $(UTILS_DIR)/time_utils.c \
 	   $(UTILS_DIR)/minimap_utils.c \
 	   $(UTILS_DIR)/minimap.c \
 
-INPUT_DIR = input
-SRC += $(INPUT_DIR)/arrows.c \
+
 
 SRC := $(addprefix $(SRCS_DIR)/, $(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:24:35 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 14:03:22 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 18:09:18 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	handle_key_press(int keycode, void *param)
 	if (keycode == 65307)
 		close_window(game);
 	if (is_direction_key(keycode))
-		handle_direction_press(keycode);
+		handle_direction_press(keycode, game->player, game);
 	return (0);
 }
 

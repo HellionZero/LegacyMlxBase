@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 16:09:24 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:52:00 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,16 +104,20 @@ struct s_ray
 
 struct s_player
 {
-	t_icoord	pos;
+	t_dcoord	pos;
 	t_dim		dim;
 	int			color;
 };
 
 /* 
 buffer: structure that holds the minimap's image data and dimensions
+mlx_ptr: pointer to the MLX instance, used for all MLX operations
 dim: dimensions of the minimap
-minimap_pos: position of the minimap on the screen
+ref_map: reference to the main game map, used to determine what to render
+pos: position of the minimap on the screen
 offset: offset to center the minimap around the player
+player_pos: current position of the player, used to calculate 
+	the player's position on the minimap
 scale: scaling factor to adjust the size of the minimap
 */
 struct s_minimap

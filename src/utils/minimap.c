@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 14:04:52 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 16:35:14 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:54:32 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static void	initialize_minimap_data(t_minimap *minimap, t_game *game)
 	minimap->scale = 27.0f;
 	minimap->ref_map = game->map;
 	if (game->player)
-		minimap->player_pos = game->player->pos;
+		minimap->player_pos = (t_icoord){(int)(game->player->pos.x + 0.5),
+			(int)(game->player->pos.y + 0.5)};
 }
 
 t_minimap	*create_minimap(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 17:26:20 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 14:55:31 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:31:57 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,11 @@ void		free_pixel_data(t_data *data, void *mlx_ptr);
 t_icoord	calcule_delta(t_icoord start, t_icoord end);
 t_icoord	calcule_step(t_icoord start, t_icoord end);
 
+/* function to calculate the pivot points for a rectangle,
+used to indicate points of collision and centering */
 void		calculate_pivot_points(t_rectangle *rect);
 
+/* ------------------ texture rendering functions ------------------ */
 t_image		*load_texture(void *mlx_ptr, char *path);
 void		render_texture(t_data *data, t_image *texture, t_icoord pos);
 void		draw_textured_rectangle(t_data *data, t_icoord pos, t_dim dim,
