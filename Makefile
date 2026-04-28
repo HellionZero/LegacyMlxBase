@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/20 17:11:50 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/28 16:44:09 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MLX = $(MLX_DIR)/libmlx.a
 
 SRC = main.c \
+	  init.c \
 	  hooks.c \
 	  window.c \
 
@@ -34,14 +35,21 @@ SRC += $(DEBUG_DIR)/map_debug.c \
 
 RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
+	   $(RENDER_DIR)/minimap_layer.c \
 	   $(RENDER_DIR)/pixel.c \
 	   $(RENDER_DIR)/shapes.c \
 	   $(RENDER_DIR)/render_utils.c \
-	   $(RENDER_DIR)/eight_path.c \
+	   $(RENDER_DIR)/nine_point.c \
 	   $(RENDER_DIR)/texture.c \
 
 UTILS_DIR = utils
 SRC += $(UTILS_DIR)/time_utils.c \
+	   $(UTILS_DIR)/minimap_player.c \
+	   $(UTILS_DIR)/minimap_utils.c \
+	   $(UTILS_DIR)/minimap.c \
+
+INPUT_DIR = input
+SRC += $(INPUT_DIR)/arrows.c \
 
 SRC := $(addprefix $(SRCS_DIR)/, $(SRC))
 

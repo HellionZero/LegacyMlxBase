@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:23:00 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 18:35:48 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:43:36 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 # define YELLOW 0xFFFF00
 
 typedef enum e_points		t_points;
+typedef enum e_sides		t_sides;
 typedef struct s_dim		t_dim;
 typedef struct s_icoord		t_icoord;
+typedef struct s_dcoord		t_dcoord;
 
 enum e_points
 {
@@ -37,10 +39,24 @@ enum e_points
 	CENTER
 };
 
+enum e_sides
+{
+	TOP,
+	BOTTOM,
+	LEFT,
+	RIGHT
+};
+
 struct s_icoord
 {
 	int	x;
 	int	y;
+};
+
+struct s_dcoord
+{
+	double	x;
+	double	y;
 };
 
 struct s_dim

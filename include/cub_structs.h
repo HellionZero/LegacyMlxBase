@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 18:35:27 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:09:24 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ typedef struct s_render_cfg	t_render_cfg;
 typedef struct s_window		t_window;
 typedef struct s_game		t_game;
 typedef struct s_map		t_map;
+typedef struct s_minimap	t_minimap;
+typedef struct s_player		t_player;
+typedef struct s_ray		t_ray;
 typedef struct s_data		t_data;
 typedef struct s_rectangle	t_rectangle;
 typedef struct s_sprite		t_sprite;
@@ -90,6 +93,41 @@ struct s_map
 	t_dim	dim;
 };
 
+struct s_ray
+{
+	t_icoord	pos;
+	t_icoord	dir;
+	float		length;
+	int			hit_wall;
+	int			hit_sprite;
+};
+
+struct s_player
+{
+	t_icoord	pos;
+	t_dim		dim;
+	int			color;
+};
+
+/* 
+buffer: structure that holds the minimap's image data and dimensions
+dim: dimensions of the minimap
+minimap_pos: position of the minimap on the screen
+offset: offset to center the minimap around the player
+scale: scaling factor to adjust the size of the minimap
+*/
+struct s_minimap
+{
+	t_data		*buffer;
+	void		*mlx_ptr;
+	t_dim		dim;
+	t_map		*ref_map;
+	t_icoord	pos;
+	t_icoord	offset;
+	t_icoord	player_pos;
+	float		scale;
+};
+
 struct s_rectangle
 {
 	t_icoord	pos;
@@ -124,12 +162,14 @@ struct s_game
 {
 	t_window		*window;
 	t_timer			timer;
+	t_player		*player;
 	t_rectangle		player_rect;
-	t_map			map;
+	t_map			*map;
 	t_render_cfg	config;
 	t_image			*wall_texture;
 	t_image			*floor_texture;
 	t_image			*ceiling_texture;
+	t_minimap		*minimap;
 };
 
 #endif

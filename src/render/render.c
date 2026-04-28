@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:19:29 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 18:34:33 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:41:48 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ int	render(void *param)
 	draw_line(data, (t_icoord){400, 0}, (t_icoord){0, 300}, 0x0000FF);
 	draw_polygon(data, (t_icoord[]){(t_icoord){100, 100},
 		(t_icoord){300, 100}, (t_icoord){200, 250}}, 3, 0xFFFF00);
-	render_temporary_map(game);
+	if (game->minimap)
+	{
+		render_minimap(game->minimap, game);
+		composite_minimap_to_main(data, game->minimap);
+	}
 	render_frame(data, game->window->mlx_ptr, game->window->win_ptr);
 	return (0);
 }

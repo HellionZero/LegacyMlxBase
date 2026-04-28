@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_debug.h                                        :+:      :+:    :+:   */
+/*   cub_input.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 17:06:23 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 15:09:11 by lsarraci         ###   ########.fr       */
+/*   Created: 2026/04/28 13:49:45 by lsarraci          #+#    #+#             */
+/*   Updated: 2026/04/28 17:14:08 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_DEBUG_H
-# define CUB_DEBUG_H
+#ifndef CUB_INPUT_H
+# define CUB_INPUT_H
 
-# include "cub_structs.h"
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_W 119
 
-t_map	temp_map(void);
-void	init_map(t_game *game);
-void	render_main_map(t_game *game, t_data *data);
+int		is_arrow_key(int keycode);
+void	handle_arrow_press(int keycode);
+int		is_direction_key(int keycode);
+void	handle_direction_press(int keycode);
 
 #endif

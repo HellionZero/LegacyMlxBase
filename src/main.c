@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:39 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 18:24:54 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:38:03 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,21 @@ static void	remove_all_textures(t_game *game)
 	}
 }
 
+static void	remove_buffer_data(t_game *game)
+{
+	if (game->minimap)
+		destroy_minimap(game->minimap);
+	if (game->player)
+		destroy_player(game->player);
+	if (game->map)
+		free(game->map);
+}
+
 void	free_game(t_game *game)
 {
 	if (game)
 	{
+		remove_buffer_data(game);
 		if (game->window)
 		{
 			remove_all_textures(game);
@@ -47,23 +58,6 @@ void	free_game(t_game *game)
 		}
 		free(game);
 	}
-}
-
-void	init_game(t_game *game)
-{
-	if (!game)
-		return ;
-	game->window = create_window(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D");
-	if (!game->window)
-	{
-		ft_putstr_fd("Failed to create window\n", 2);
-		free_game(game);
-		exit(1);
-	}
-	game->wall_texture = NULL;
-	game->floor_texture = NULL;
-	game->ceiling_texture = NULL;
-	init_timer(&game->timer);
 }
 
 int	main(void)

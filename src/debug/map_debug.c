@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 17:01:40 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/20 17:24:22 by lsarraci         ###   ########.fr       */
+/*   Created: 2026/04/20 17:01:40 by lsarraci          #+#    +#+        */
+/*   Updated: 2026/04/28 18:34:35 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,73 @@ t_map	temp_map(void)
 	return (map);
 }
 
-void	render_temporary_map(t_game *game)
+static void	set_elements_position(t_game *game)
 {
-	int		x;
-	int		y;
-	t_map	map;
+	t_icoord	pos;
 
-	map = temp_map();
-	y = 0;
-	while (y < map.dim.height)
+	if (game->player && game->map && game->map->grid)
 	{
-		x = 0;
-		while (x < map.dim.width)
+		pos.x = 0;
+		pos.y = 0;
+		while (pos.y < game->map->dim.height)
 		{
-			if (map.grid[y][x] == '1')
-				draw_rectangle(game->window->img_ptr,
-					(t_icoord){x * 42, y * 42},
-					(t_dim){40, 40}, 0xFFFFFF);
-			if (map.grid[y][x] == 'P')
-				draw_rectangle(game->window->img_ptr,
-					(t_icoord){x * 42, y * 42},
-					(t_dim){10, 10}, BLUE);
-			x++;
+			pos.x = 0;
+			while (pos.x < game->map->dim.width)
+			{
+				if (game->map->grid[pos.y]
+					&& game->map->grid[pos.y][pos.x] == 'P')
+				{
+					game->player->pos.x = pos.x;
+					game->player->pos.y = pos.y;
+					return ;
+				}
+				pos.x++;
+			}
+			pos.y++;
 		}
-		y++;
+	}
+}
+
+void	init_map(t_game *game)
+{
+	t_map		map;
+
+	if (!game || game->map)
+		return ;
+	map = temp_map();
+	game->map = malloc(sizeof(t_map));
+	if (game->map)
+	{
+		game->map->grid = map.grid;
+		game->map->dim = map.dim;
+	}
+	set_elements_position(game);
+}
+
+void	render_main_map(t_game *game, t_data *data)
+{
+	t_icoord	pos;
+	int			tile_size;
+
+	if (!game || !game->map || !data)
+		return ;
+	tile_size = 42;
+	pos.y = 0;
+	while (pos.y < game->map->dim.height)
+	{
+		pos.x = 0;
+		while (pos.x < game->map->dim.width)
+		{
+			if (game->map->grid[pos.y] && game->map->grid[pos.y][pos.x] == '1')
+				draw_rectangle(data,
+					(t_icoord){pos.x * tile_size, pos.y * tile_size},
+					(t_dim){tile_size - 2, tile_size - 2}, 0xFFFFFF);
+			if (game->map->grid[pos.y] && game->map->grid[pos.y][pos.x] == 'P')
+				draw_rectangle(data, (t_icoord){pos.x * tile_size + 10,
+					pos.y * tile_size + 10}, (t_dim){tile_size - 20,
+					tile_size - 20}, 0x00FF00);
+			pos.x++;
+		}
+		pos.y++;
 	}
 }
