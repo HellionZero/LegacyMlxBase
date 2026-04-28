@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:06:23 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 15:09:11 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 18:53:20 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@
 
 t_map	temp_map(void);
 void	init_map(t_game *game);
-void	render_main_map(t_game *game, t_data *data);
 
 #endif

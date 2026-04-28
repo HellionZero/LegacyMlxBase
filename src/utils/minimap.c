@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 14:04:52 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 17:54:32 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 18:57:02 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ static void	set_minimap_image(t_minimap *minimap)
 
 static void	initialize_minimap_data(t_minimap *minimap, t_game *game)
 {
-	minimap->buffer->width = 300;
-	minimap->buffer->height = 300;
+	minimap->buffer->width = 150;
+	minimap->buffer->height = 150;
 	minimap->mlx_ptr = game->window->mlx_ptr;
-	minimap->dim = (t_dim){300, 300};
+	minimap->dim = (t_dim){150, 150};
 	minimap->pos = (t_icoord){500, 300};
 	minimap->offset = (t_icoord){0, 0};
-	minimap->scale = 27.0f;
+	minimap->scale = 20.0f;
 	minimap->ref_map = game->map;
 	if (game->player)
 		minimap->player_pos = (t_icoord){(int)(game->player->pos.x + 0.5),

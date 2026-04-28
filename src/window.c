@@ -6,13 +6,13 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 16:25:44 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 14:47:45 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/28 18:59:29 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub.h"
 
-static t_data	*prepare_image_data(void *mlx_ptr, int width, int height)
+t_data	*prepare_image_data(void *mlx_ptr, int width, int height)
 {
 	t_data	*data;
 
