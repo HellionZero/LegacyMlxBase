@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:44:58 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 16:43:52 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:33:47 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 void		init_timer(t_timer *timer);
 void		update_timer(t_timer *timer);
+float		set_step(float delta_time, float base_speed);
 
 t_player	*create_player(void);
 void		destroy_player(t_player *player);

@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:23:00 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 16:43:36 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:07:31 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,20 @@
 # define BLACK 0x000000
 # define YELLOW 0xFFFF00
 
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
+
+# define PI 3.14159265358979323846
+
+# define ROT_FACTOR 2.0f
+# define STEP_SIZE 0.1f
+
 typedef enum e_points		t_points;
 typedef enum e_sides		t_sides;
 typedef struct s_dim		t_dim;
 typedef struct s_icoord		t_icoord;
 typedef struct s_dcoord		t_dcoord;
+typedef struct s_fcoord 	t_fcoord;
 
 enum e_points
 {
@@ -57,6 +66,12 @@ struct s_dcoord
 {
 	double	x;
 	double	y;
+};
+
+struct s_fcoord
+{
+	float	x;
+	float	y;
 };
 
 struct s_dim

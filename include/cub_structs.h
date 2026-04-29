@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 18:56:06 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 17:16:14 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ typedef struct s_player		t_player;
 typedef struct s_ray		t_ray;
 typedef struct s_data		t_data;
 typedef struct s_line		t_line;
+typedef struct s_frect		t_frect;
 typedef struct s_rectangle	t_rectangle;
 typedef struct s_sprite		t_sprite;
 typedef struct s_image		t_image;
 typedef struct s_timer		t_timer;
+typedef struct s_input		t_input;
 
 /*
 img: pointer to the image created by mlx_new_image
@@ -77,6 +79,18 @@ struct s_timer
 	float			delta_time;
 };
 
+struct s_input
+{
+	int	left;
+	int	right;
+	int	up;
+	int	down;
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+};
+
 struct s_image
 {
 	void	*img_ptr;
@@ -106,6 +120,9 @@ struct s_ray
 	t_data		*data;
 	t_icoord	pos;
 	t_icoord	dir;
+	t_dcoord	fpos;
+	t_dcoord	fdir;
+	t_dcoord	hit;
 	float		length;
 	int			hit_wall;
 	int			hit_sprite;
@@ -117,6 +134,7 @@ struct s_player
 	t_dim		dim;
 	int			color;
 	t_ray		ray;
+	float		angle;
 };
 
 /* 
@@ -150,6 +168,15 @@ struct s_rectangle
 	t_icoord	points[9];
 };
 
+struct s_frect
+{
+	float	x;
+	float	y;
+	float	width;
+	float	height;
+	int		points[9];
+};
+
 struct s_sprite
 {
 	t_icoord	pos;
@@ -176,9 +203,11 @@ struct s_game
 {
 	t_window		*window;
 	t_timer			timer;
+	t_input			input;
 	t_player		*player;
-	t_rectangle		player_rect;
+	t_frect			player_rect;
 	t_map			*map;
+	t_ray			ray;
 	t_render_cfg	config;
 	t_image			*wall_texture;
 	t_image			*floor_texture;

@@ -6,36 +6,54 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:19:29 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 18:59:44 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 18:16:59 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
+#include <stdio.h>
+
+static int	update_input_render(t_game *game)
+{
+	if (game->input.left)
+		handle_arrow_press(KEY_LEFT, game->player, game);
+	if (game->input.right)
+		handle_arrow_press(KEY_RIGHT, game->player, game);
+	if (game->input.w)
+		set_directional_movement(KEY_W, game->player, game);
+	if (game->input.s)
+		set_directional_movement(KEY_S, game->player, game);
+	if (game->input.a)
+		set_directional_movement(KEY_A, game->player, game);
+	if (game->input.d)
+		set_directional_movement(KEY_D, game->player, game);
+	return (0);
+}
 
 int	render(void *param)
 {
-	t_game	*game;
-	t_data	*data;
+	t_game		*game;
+	t_data		*data;
+	static int	frame = 0;
 
 	game = (t_game *)param;
 	update_timer(&game->timer);
 	if (!game || !game->window || !game->window->img_ptr)
 		return (0);
 	data = game->window->img_ptr;
+	update_input_render(game);
 	clear_buffer(data, 0x000000);
-	if (game->wall_texture)
-		draw_textured_rectangle(data, (t_icoord){600, 450},
-			(t_dim){150, 150}, game->wall_texture);
 	draw_rectangle(data, (t_icoord){100, 100}, (t_dim){200, 150}, 0xFF0000);
-	draw_line(data, (t_icoord){0, 0}, (t_icoord){400, 300}, 0x00FF00);
-	draw_line(data, (t_icoord){400, 0}, (t_icoord){0, 300}, 0x0000FF);
-	draw_polygon(data, (t_icoord[]){(t_icoord){100, 100},
-		(t_icoord){300, 100}, (t_icoord){200, 250}}, 3, 0xFFFF00);
+	fprintf(stderr, "render: skipping draw_line/draw_polygon\n");
+	fprintf(stderr, "render: about to render minimap\n");
 	if (game->minimap)
 	{
+		fprintf(stderr, "render: calling render_minimap\n");
 		render_minimap(game->minimap, game);
+		fprintf(stderr, "render: calling composite_minimap_to_main\n");
 		composite_minimap_to_main(data, game->minimap);
 	}
 	render_frame(data, game->window->mlx_ptr, game->window->win_ptr);
+	frame++;
 	return (0);
 }

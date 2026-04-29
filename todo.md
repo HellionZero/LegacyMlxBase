@@ -27,3 +27,10 @@ _atualização: 28/04/2026_
 [  ] implementar movimentação do player
 [  ] implementar movimentação da câmera
 [  ] implementar interação com o ambiente (portas, etc)
+
+_atualização: 29/04/2026_
+
+[✅] adaptar movimentação do player no minimapa a implementação do raycasting
+[✅] implementação do primeiro ray no mapa
+[  ] atualização do algoritmo de colisão para considerar o tamanho do player
+[  ] refatoração do código para melhorar a organização e legibilidade

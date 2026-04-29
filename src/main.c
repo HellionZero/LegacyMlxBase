@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:39 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 18:57:51 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 14:45:01 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,13 @@ int	main(void)
 {
 	t_game	*game;
 
-	game = malloc(sizeof(t_game));
+	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 	{
 		ft_putstr_fd("Failed to allocate memory for game\n", 2);
 		return (1);
 	}
 	init_game(game);
-	game->wall_texture = load_texture(game->window->mlx_ptr,
-			"src/assets/img_xpm/Wall1.xpm");
-	if (!game->wall_texture)
-	{
-		ft_putstr_fd("Error: Failed to load wall texture\n", 2);
-	}
 	init_timer(&game->timer);
 	setup_hooks(game);
 	mlx_loop(game->window->mlx_ptr);

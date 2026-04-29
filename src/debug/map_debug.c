@@ -60,14 +60,15 @@ void	init_map(t_game *game)
 {
 	t_map		map;
 
-	if (!game || game->map)
-		return ;
 	map = temp_map();
 	game->map = malloc(sizeof(t_map));
 	if (game->map)
 	{
 		game->map->grid = map.grid;
 		game->map->dim = map.dim;
+		fprintf(stderr, "init_map: game=%p map=%p map->grid=%p dim=(%d,%d)\n",
+			(void*)game, (void*)game->map, (void*)game->map->grid,
+			game->map->dim.width, game->map->dim.height);
 	}
 	set_elements_position(game);
 }

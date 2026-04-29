@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:56:15 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 18:23:55 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 16:50:16 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	strafe_player(t_player *player, t_map *map, float move_step);
 void	set_directional_movement(int keycode, t_player *player, t_game *game);
 void	set_player_ray(t_game *game, t_player *player, t_ray *ray,
 			float ray_angle);
-
+void	render_first_ray(t_player *player, t_minimap *map, t_ray *ray);
+int		rect_collides(t_map *map, t_dcoord pos, t_dim dim);
 #endif
