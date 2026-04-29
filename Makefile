@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/29 18:26:11 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/29 19:37:07 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC += $(INPUT_DIR)/arrows.c \
 RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
 	   $(RENDER_DIR)/minimap_layer.c \
+	   $(RENDER_DIR)/minimap_layer_utils.c \
 	   $(RENDER_DIR)/pixel.c \
 	   $(RENDER_DIR)/shapes.c \
 	   $(RENDER_DIR)/render_utils.c \

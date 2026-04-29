@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:19:29 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 18:16:59 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 19:44:47 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	render(void *param)
 	if (game->minimap)
 	{
 		fprintf(stderr, "render: calling render_minimap\n");
-		render_minimap(game->minimap, game);
+		render_minimap(game->minimap, game, 0);
 		fprintf(stderr, "render: calling composite_minimap_to_main\n");
 		composite_minimap_to_main(data, game->minimap);
 	}
