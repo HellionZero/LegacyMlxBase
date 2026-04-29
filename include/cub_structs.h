@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 17:16:14 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:09:00 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ struct s_player
 	int			color;
 	t_ray		ray;
 	float		angle;
+	float		collision_radius;
 };
 
 /* 
@@ -172,6 +173,8 @@ struct s_frect
 {
 	float	x;
 	float	y;
+	t_dcoord	pos;
+	t_dim   dim;
 	float	width;
 	float	height;
 	int		points[9];

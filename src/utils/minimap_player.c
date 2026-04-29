@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:34:14 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 14:12:15 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:04:14 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_player	*create_player(void)
 	player->dim = (t_dim){1, 1};
 	player->color = GREEN;
 	player->angle = 0.0f;
+	player->collision_radius = 0.3f;
 	return (player);
 }
 

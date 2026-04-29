@@ -6,60 +6,63 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 15:13:21 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 18:29:08 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:28:12 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
-/*t_frect	*player_to_rect(t_dcoord pos, t_dim dim)
+void	player_to_frect(t_dcoord pos, float radius, t_frect *out)
 {
-	t_frect	*rect;
+	if (!out)
+		return ;
+	out->width = radius * 2.0f;
+	out->height = radius * 2.0f;
+	out->x = (float)(pos.x - out->width / 2.0f);
+	out->y = (float)(pos.y - out->height / 2.0f);
+}
 
-	rect = malloc(sizeof(t_frect));
-	if (!rect)
-		return (NULL);
-	rect->x = pos.x - ((double)dim.width / 2.0);
-	rect->y = pos.y - ((double)dim.height / 2.0);
-	rect->width = dim.width;
-	rect->height = dim.height;
-	return (rect);
-}*/
-
-int	rect_collides(t_map *map, t_dcoord pos, t_dim dim)
+void	frect_sample_point(const t_frect *r, int i, int j,
+			t_dcoord *out)
 {
-	double	minx, miny, maxx, maxy;
-	int		i_min, i_max, j_min, j_max;
-	int		x, y;
-	double	epsilon = 1e-6;
+	if (!r || !out)
+		return ;
+	out->x = (double)r->x + (i / 2.0) * (double)r->width;
+	out->y = (double)r->y + (j / 2.0) * (double)r->height;
+}
 
-	if (!map || !map->grid)
+int	frect_collides_map(t_map *map, const t_frect *r, int i)
+{
+	t_dcoord	sample;
+	t_icoord	g;
+	int			j;
+
+	if (!map || !map->grid || !r)
 		return (1);
-	/* interpret pos as center of rectangle */
-	minx = pos.x - ((double)dim.width / 2.0);
-	miny = pos.y - ((double)dim.height / 2.0);
-	maxx = pos.x + ((double)dim.width / 2.0);
-	maxy = pos.y + ((double)dim.height / 2.0);
-	i_min = (int)(minx);
-	i_max = (int)(maxx - epsilon);
-	j_min = (int)(miny);
-	j_max = (int)(maxy - epsilon);
-	if (i_min < 0 || j_min < 0 || i_max >= map->dim.width || j_max >= map->dim.height)
-		return (1);
-	x = i_min;
-	while (x <= i_max)
+	while (i <= 2)
 	{
-		y = j_min;
-		while (y <= j_max)
+		j = 0;
+		while (j <= 2)
 		{
-			if (map->grid[y][x] == '1')
-			{
-				fprintf(stderr, "rect_collides: collision at cell (%d,%d)\n", x, y);
+			frect_sample_point(r, i, j, &sample);
+			g.x = (int)floor(sample.x);
+			g.y = (int)floor(sample.y);
+			if (g.x < 0 || g.y < 0 || g.x >= map->dim.width
+				|| g.y >= map->dim.height)
 				return (1);
-			}
-			y++;
+			if (map->grid[g.y][g.x] == '1')
+				return (1);
+			j++;
 		}
-		x++;
+		i++;
 	}
 	return (0);
+}
+
+int	rect_collides(t_map *map, t_dcoord pos, float radius)
+{
+	t_frect	r;
+
+	player_to_frect(pos, radius, &r);
+	return (frect_collides_map(map, &r, 0));
 }

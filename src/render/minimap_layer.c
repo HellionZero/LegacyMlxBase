@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:20:34 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 19:44:47 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/29 20:04:00 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,16 @@ void	draw_player_on_minimap(t_minimap *minimap, t_game *game)
 	t_dim		tile_dim;
 	t_icoord	screen_pos;
 	t_dcoord	p;
+	int			width_px;
 
 	if (!minimap || !game || !game->player)
 		return ;
 	p.x = game->player->pos.x * minimap->scale;
 	p.y = game->player->pos.y * minimap->scale;
-	tile_dim.width = (int)(minimap->scale / 2.0f);
-	tile_dim.height = (int)(minimap->scale / 2.0f);
+	width_px = (int)roundf(game->player->collision_radius * 2.0f
+			* minimap->scale);
+	tile_dim.width = width_px;
+	tile_dim.height = width_px;
 	screen_pos.x = (int)(p.x + minimap->offset.x - (tile_dim.width / 2));
 	screen_pos.y = (int)(p.y + minimap->offset.y - (tile_dim.height / 2));
 	draw_tile_at(minimap, screen_pos, tile_dim, GREEN);
