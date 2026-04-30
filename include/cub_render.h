@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 17:26:20 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/28 18:53:57 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 15:30:04 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		draw_polygon(t_data *data, t_icoord *points,
 
 /* function to render the current frame by putting the image to the window */
 void		render_frame(t_data *data, void *mlx_ptr, void *win_ptr);
+
+void		render_background(t_data *data, t_game *game);
 
 /* function to free the pixel data and destroy the image */
 void		free_pixel_data(t_data *data, void *mlx_ptr);

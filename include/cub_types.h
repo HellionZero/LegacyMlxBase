@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:23:00 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 18:07:31 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 15:16:29 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum e_sides		t_sides;
 typedef struct s_dim		t_dim;
 typedef struct s_icoord		t_icoord;
 typedef struct s_dcoord		t_dcoord;
-typedef struct s_fcoord 	t_fcoord;
+typedef struct s_fcoord		t_fcoord;
 
 enum e_points
 {

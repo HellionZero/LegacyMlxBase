@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/29 19:37:07 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/30 14:58:22 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC += $(DEBUG_DIR)/map_debug.c \
 ENGINE_DIR = engine
 SRC += $(ENGINE_DIR)/movement.c \
 	   $(ENGINE_DIR)/first_ray.c \
-		$(ENGINE_DIR)/player_ray.c \
+		$(ENGINE_DIR)/vision_ray.c \
 		$(ENGINE_DIR)/collision.c \
 		$(ENGINE_DIR)/engine_utils.c \
 
@@ -47,6 +47,7 @@ RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
 	   $(RENDER_DIR)/minimap_layer.c \
 	   $(RENDER_DIR)/minimap_layer_utils.c \
+	   $(RENDER_DIR)/bg_layer.c \
 	   $(RENDER_DIR)/pixel.c \
 	   $(RENDER_DIR)/shapes.c \
 	   $(RENDER_DIR)/render_utils.c \

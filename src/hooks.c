@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:24:35 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 18:10:27 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 14:03:30 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	handle_key_press(int keycode, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	fprintf(stderr, "handle_key_press: keycode=%d\n", keycode);
 	if (!game)
 		return (0);
 	if (keycode == 65307)

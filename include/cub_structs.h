@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 20:09:00 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 15:38:55 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ struct s_data
 	int		height;
 };
 
-struct t_line
+struct s_line
 {
 	t_icoord	start;
 	t_icoord	end;
@@ -111,8 +111,10 @@ struct s_render_cfg
 
 struct s_map
 {
-	char	**grid;
-	t_dim	dim;
+	char			**grid;
+	t_dim			dim;
+	unsigned int	floor_color;
+	unsigned int	ceiling_color;
 };
 
 struct s_ray
@@ -126,6 +128,7 @@ struct s_ray
 	float		length;
 	int			hit_wall;
 	int			hit_sprite;
+	int			color;
 };
 
 struct s_player
@@ -136,6 +139,7 @@ struct s_player
 	t_ray		ray;
 	float		angle;
 	float		collision_radius;
+	char		orientation;
 };
 
 /* 
@@ -171,13 +175,13 @@ struct s_rectangle
 
 struct s_frect
 {
-	float	x;
-	float	y;
+	float		x;
+	float		y;
 	t_dcoord	pos;
-	t_dim   dim;
-	float	width;
-	float	height;
-	int		points[9];
+	t_dim		dim;
+	float		width;
+	float		height;
+	int			points[9];
 };
 
 struct s_sprite

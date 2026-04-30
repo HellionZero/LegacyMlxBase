@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:07:25 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 18:23:52 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 15:41:26 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static void	init_ray_for_player(t_ray *ray, t_player *player,
 	ray->length = 0;
 	ray->hit_wall = 0;
 	ray->hit_sprite = 0;
+	ray->color = RED;
 }
 
-static void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point)
+void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point)
 {
 	int			max_distance;
 	t_icoord	map_pos;
@@ -50,7 +51,7 @@ static void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point)
 	*hit_point = (t_dcoord){ray->fpos.x, ray->fpos.y};
 }
 
-static void	draw_ray_on_minimap(t_ray *ray, t_minimap *map, t_player *player,
+void	draw_ray_on_minimap(t_ray *ray, t_minimap *map, t_player *player,
 				t_dcoord *hit_point)
 {
 	t_icoord	start;
@@ -64,7 +65,7 @@ static void	draw_ray_on_minimap(t_ray *ray, t_minimap *map, t_player *player,
 	end.x = (int)(cur.x * map->scale + map->offset.x);
 	end.y = (int)(cur.y * map->scale + map->offset.y);
 	if (ray->data)
-		draw_line(ray->data, start, end, RED);
+		draw_line(ray->data, start, end, ray->color);
 }
 
 void	render_first_ray(t_player *player, t_minimap *mmap, t_ray *ray)

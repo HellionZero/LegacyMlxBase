@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 19:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 19:40:30 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 15:34:53 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	render_player_and_ray(t_game *game, t_minimap *minimap)
 	{
 		draw_player_on_minimap(minimap, game);
 		render_first_ray(game->player, minimap, &game->ray);
+		draw_fov_rays(game->player, minimap, minimap->buffer);
 	}
 }

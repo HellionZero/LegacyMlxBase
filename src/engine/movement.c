@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:36:55 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/29 18:37:23 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 14:03:31 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ void	move_player(t_player *player, t_map *map, float move_step)
 	new_pos_x.x = player->pos.x + (move_step * cosf(player->angle));
 	new_pos_x.y = player->pos.y;
 	if (!rect_collides(map, new_pos_x, player->collision_radius))
-	{
 		player->pos.x = new_pos_x.x;
-		fprintf(stderr, "move_player: moved X to %.3f\n", player->pos.x);
-	}
 	else
 		fprintf(stderr, "move_player: blocked X\n");
 	new_pos_y.x = player->pos.x;
@@ -50,7 +47,6 @@ void	move_player(t_player *player, t_map *map, float move_step)
 	if (!rect_collides(map, new_pos_y, player->collision_radius))
 	{
 		player->pos.y = new_pos_y.y;
-		fprintf(stderr, "move_player: moved Y to %.3f\n", player->pos.y);
 	}
 	else
 		fprintf(stderr, "move_player: blocked Y\n");
@@ -66,19 +62,13 @@ void	strafe_player(t_player *player, t_map *map, float move_step)
 	new_pos_x.x = player->pos.x + (move_step * cosf(player->angle + PI / 2));
 	new_pos_x.y = player->pos.y;
 	if (!rect_collides(map, new_pos_x, player->collision_radius))
-	{
 		player->pos.x = new_pos_x.x;
-		fprintf(stderr, "strafe_player: moved X to %.3f\n", player->pos.x);
-	}
 	else
 		fprintf(stderr, "strafe_player: blocked X\n");
 	new_pos_y.x = player->pos.x;
 	new_pos_y.y = player->pos.y + (move_step * sinf(player->angle + PI / 2));
 	if (!rect_collides(map, new_pos_y, player->collision_radius))
-	{
 		player->pos.y = new_pos_y.y;
-		fprintf(stderr, "strafe_player: moved Y to %.3f\n", player->pos.y);
-	}
 	else
 		fprintf(stderr, "strafe_player: blocked Y\n");
 }
