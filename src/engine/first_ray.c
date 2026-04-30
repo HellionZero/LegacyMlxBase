@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:07:25 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 15:41:26 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 19:04:48 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,114 @@ static void	init_ray_for_player(t_ray *ray, t_player *player,
 
 void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point)
 {
-	int			max_distance;
-	t_icoord	map_pos;
+	t_icoord	rmap;
+	t_dcoord	rd;
+	t_dcoord	delta_dist;
+	t_dcoord	side_dist;
+	t_icoord	step;
+	int			hit;
+	int			side;
+	double		perp_dist;
 
-	max_distance = 1000;
-	while (ray->length < max_distance)
+	hit = 0;
+	side = 0;
+	if (!ray)
 	{
-		map_pos.x = (int)ray->fpos.x;
-		map_pos.y = (int)ray->fpos.y;
-		if (map_pos.x < 0 || map_pos.x >= map->ref_map->dim.width
-			|| map_pos.y < 0 || map_pos.y >= map->ref_map->dim.height)
-			break ;
-		if (map->ref_map->grid[map_pos.y][map_pos.x] == '1')
-			break ;
-		ray->fpos.x += ray->fdir.x * STEP_SIZE;
-		ray->fpos.y += ray->fdir.y * STEP_SIZE;
-		ray->length += STEP_SIZE;
+		if (hit_point) *hit_point = (t_dcoord){0.0, 0.0};
+		return ;
 	}
-	ray->pos.x = (int)ray->fpos.x;
-	ray->pos.y = (int)ray->fpos.y;
-	ray->dir.x = (int)roundf(ray->fdir.x);
-	ray->dir.y = (int)roundf(ray->fdir.y);
-	*hit_point = (t_dcoord){ray->fpos.x, ray->fpos.y};
+	if (!map || !map->ref_map || !map->ref_map->grid)
+	{
+		if (hit_point) *hit_point = ray->fpos;
+		ray->length = 0.0f;
+		return ;
+	}
+
+	rd.x = ray->fdir.x;
+	rd.y = ray->fdir.y;
+	rmap.x = (int)floor(ray->fpos.x);
+	rmap.y = (int)floor(ray->fpos.y);
+
+	if (rd.x == 0.0)
+		delta_dist.x= 1e-30;
+	else
+		delta_dist.x = fabs(1.0 / rd.x);
+	if (rd.y == 0.0)
+		delta_dist.y = 1e-30;
+	else
+		delta_dist.y = fabs(1.0 / rd.y);
+	if (rd.x < 0)
+	{
+		step.x = -1;
+		side_dist.x = (ray->fpos.x - rmap.x) * delta_dist.x;
+	}
+	else
+	{
+		step.x = 1;
+		side_dist.x = (rmap.x + 1.0 - ray->fpos.x) * delta_dist.x;
+	}
+	if (rd.y < 0)
+	{
+		step.y = -1;
+		side_dist.y = (ray->fpos.y - rmap.y) * delta_dist.y;
+	}
+	else
+	{
+		step.y = 1;
+		side_dist.y = (rmap.y + 1.0 - ray->fpos.y) * delta_dist.y;
+	}
+
+	/* DDA loop */
+	while (!hit)
+	{
+		/* bounds check */
+		if (rmap.x < 0 || rmap.x >= map->ref_map->dim.width || rmap.y < 0 || rmap.y >= map->ref_map->dim.height)
+			break ;
+
+		if (side_dist.x < side_dist.y)
+		{
+			side_dist.x += delta_dist.x;
+			rmap.x += step.x;
+			side = 0;
+		}
+		else
+		{
+			side_dist.y += delta_dist.y;
+			rmap.y += step.y;
+			side = 1;
+		}
+		if (map->ref_map->grid[rmap.y][rmap.x] == '1')
+		{
+			hit = 1;
+			break ;
+		}
+	}
+	if (hit)
+	{
+		
+		if (side == 0)
+			perp_dist = (rmap.x - ray->fpos.x + (1 - step.x) / 2.0) / rd.x;
+		else
+			perp_dist = (rmap.y - ray->fpos.y + (1 - step.y) / 2.0) / rd.y;
+
+		ray->hit.x = ray->fpos.x + rd.x * perp_dist;
+		ray->hit.y = ray->fpos.y + rd.y * perp_dist;
+		ray->pos.x = rmap.x;
+		ray->pos.y = rmap.y;
+		ray->hit_side = side;
+		ray->dir.x = step.x;
+		ray->dir.y = step.y;
+		ray->length = (float)fabs(perp_dist);
+		if (hit_point)
+			*hit_point = ray->hit;
+	}
+	else
+	{
+		ray->length = 0.0f;
+		ray->hit = ray->fpos;
+		if (hit_point)
+			*hit_point = ray->hit;
+	}
 }
 
 void	draw_ray_on_minimap(t_ray *ray, t_minimap *map, t_player *player,

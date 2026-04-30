@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:32:26 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 16:27:22 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 18:29:45 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ static void	init_null_defaults(t_game *game)
 	game->minimap = NULL;
 	game->ray.data = NULL;
 	game->z_buffer = NULL;
+	/* render config sensible defaults */
+	game->config.fog_distance = 20.0f;
+	game->config.light_intensity = 1.0f;
+	game->config.shadow_factor = 0.1f;
+	game->config.max_render_distance = 100;
+	game->config.render_quality = 1;
 }
 
 void	init_game(t_game *game)

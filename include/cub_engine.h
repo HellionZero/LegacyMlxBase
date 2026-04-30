@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:56:15 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 17:10:06 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 17:40:06 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void	move_camera(t_camera *camera, t_map *map, float move_step);
 void	get_camera_ray(t_camera *camera, int x, t_ray *ray);
 void 	update_camera(t_camera *camera, t_player *player);
 
-//void	cast_ray(t_game *game, t_data *data);
+void	cast_ray(t_game *game, t_data *data);
 
 #endif

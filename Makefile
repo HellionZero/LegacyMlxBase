@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/30 16:28:38 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/30 18:00:03 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT_DIR = $(LIB_DIR)/libft
 MLX_DIR = $(LIB_DIR)/minilibx-linux
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 INCLUDE = -I$(LIBFT_DIR) -I$(LIB_DIR)/$(MLX_DIR) -Iinclude
 MLX_LINK = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
 LIBFT = $(LIBFT_DIR)/libft.a

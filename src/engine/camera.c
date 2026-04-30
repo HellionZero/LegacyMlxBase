@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 15:58:35 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 16:19:06 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 17:58:25 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	get_camera_ray(t_camera *camera, int x, t_ray *ray)
 	ray->length = 0;
 	ray->hit_wall = 0;
 	ray->hit_sprite = 0;
+	ray->hit_side = 0;
+	ray->hit = ray->fpos;
 }
 
 void	update_camera(t_camera *camera, t_player *player)

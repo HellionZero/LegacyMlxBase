@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 16:24:27 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 17:54:50 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ struct s_ray
 	float		length;
 	int			hit_wall;
 	int			hit_sprite;
+	int			hit_side; /* 0 = vertical (x), 1 = horizontal (y) */
 	int			color;
 };
 
