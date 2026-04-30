@@ -46,5 +46,13 @@ fase 1: andamento: 75%
 
 *** RAYCASTER ***
 
-[  ] implementar o algoritmo de detecção de lados
-[  ] implementar o algoritmo principal do raycaster
+[✅] implementar o algoritmo de dda para o raycasting
+[✅] implementar função de sombreamento interativo
+[  ] implementar a renderização de texturas no raycaster
+
+_nota_
+
+- o raycasting necessita de refatoração para melhorar a organização e legibilidade do código. 
+- funções precisam ser redirecionadas para arquivos específicos, visto que ainda há funcionalidades misturadas em arquivos como o engine_utils.c.
+- a implementação do raycasting deve ser adaptada para considerar o tamanho do player, visto que a implementação atual é baseada em um ponto central.
+- 
