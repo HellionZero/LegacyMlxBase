@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 15:38:55 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 16:24:27 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_game		t_game;
 typedef struct s_map		t_map;
 typedef struct s_minimap	t_minimap;
 typedef struct s_player		t_player;
+typedef struct s_camera		t_camera;
 typedef struct s_ray		t_ray;
 typedef struct s_data		t_data;
 typedef struct s_line		t_line;
@@ -131,6 +132,15 @@ struct s_ray
 	int			color;
 };
 
+struct s_camera
+{
+	t_dcoord	pos;
+	t_dcoord	dir;
+	t_dcoord	plane;
+	t_icoord	screen_dim;
+	float		inv_screen_width;
+};
+
 struct s_player
 {
 	t_dcoord	pos;
@@ -220,6 +230,7 @@ struct s_game
 	t_image			*floor_texture;
 	t_image			*ceiling_texture;
 	t_minimap		*minimap;
+	float			*z_buffer;
 };
 
 #endif

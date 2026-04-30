@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:32:26 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 14:03:31 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 16:27:22 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	init_null_defaults(t_game *game)
 	game->player = NULL;
 	game->minimap = NULL;
 	game->ray.data = NULL;
+	game->z_buffer = NULL;
 }
 
 void	init_game(t_game *game)
@@ -37,10 +38,8 @@ void	init_game(t_game *game)
 	game->window = create_window(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D");
 	if (!game->window)
 		alert_and_exit("Failed to create window\n", game);
-	fprintf(stderr, "init_game: start\n");
 	init_null_defaults(game);
 	init_timer(&game->timer);
-	fprintf(stderr, "init_game: creating player\n");
 	game->player = create_player();
 	if (!game->player)
 		alert_and_exit("Failed to create player\n", game);
@@ -52,4 +51,7 @@ void	init_game(t_game *game)
 	game->minimap = create_minimap(game);
 	if (!game->minimap)
 		alert_and_exit("Failed to create minimap\n", game);
+	game->z_buffer = init_zbuffer(game);
+	if (!game->z_buffer)
+		alert_and_exit("Failed to create z-buffer\n", game);
 }

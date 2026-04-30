@@ -37,7 +37,13 @@ _atualização: 29/04/2026_
 
 _atualização: 30/04/2026_
 
+fase 1: andamento: 75%
+
 [✅] preparação da implementação do algoritmo de detecção de lados
 [✅] implementação do layer do background
 [  ] testes de renderização de texturas
 [✅] implementação do algoritmo de detecção de lados
+
+próximos passos:
+
+[  ] implementação do algoritmo principal do raycaster

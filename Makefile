@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/30 14:58:22 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/04/30 16:28:38 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,12 @@ SRC += $(DEBUG_DIR)/map_debug.c \
 
 ENGINE_DIR = engine
 SRC += $(ENGINE_DIR)/movement.c \
-	   $(ENGINE_DIR)/first_ray.c \
+		$(ENGINE_DIR)/camera.c \
+		$(ENGINE_DIR)/first_ray.c \
 		$(ENGINE_DIR)/vision_ray.c \
 		$(ENGINE_DIR)/collision.c \
 		$(ENGINE_DIR)/engine_utils.c \
+		$(ENGINE_DIR)/raycaster.c \
 
 INPUT_DIR = input
 SRC += $(INPUT_DIR)/arrows.c \
