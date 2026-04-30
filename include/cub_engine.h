@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:56:15 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 17:40:06 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 20:03:45 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,13 @@ void	get_camera_ray(t_camera *camera, int x, t_ray *ray);
 void 	update_camera(t_camera *camera, t_player *player);
 
 void	cast_ray(t_game *game, t_data *data);
+void	init_dda_variables(t_ray *ray, t_dcoord *rd, t_icoord *rmap, t_dcoord *delta_dist);
+
+unsigned int	color_to_hex(t_color color);
+t_color			hex_to_color(unsigned int hex);
+t_color			apply_shade(t_color color, float shade);
+t_color			apply_side_darkening(t_color color, int side);
+float			calculate_shade_factor(float distance, float shadow_k,
+					float light_intensity);
 
 #endif

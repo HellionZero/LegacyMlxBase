@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:07:25 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 19:04:48 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 20:04:54 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,18 @@ void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point)
 	side = 0;
 	if (!ray)
 	{
-		if (hit_point) *hit_point = (t_dcoord){0.0, 0.0};
+		if (hit_point)
+			*hit_point = (t_dcoord){0.0, 0.0};
 		return ;
 	}
 	if (!map || !map->ref_map || !map->ref_map->grid)
 	{
-		if (hit_point) *hit_point = ray->fpos;
+		if (hit_point)
+			*hit_point = ray->fpos;
 		ray->length = 0.0f;
 		return ;
 	}
-
-	rd.x = ray->fdir.x;
-	rd.y = ray->fdir.y;
-	rmap.x = (int)floor(ray->fpos.x);
-	rmap.y = (int)floor(ray->fpos.y);
-
-	if (rd.x == 0.0)
-		delta_dist.x= 1e-30;
-	else
-		delta_dist.x = fabs(1.0 / rd.x);
-	if (rd.y == 0.0)
-		delta_dist.y = 1e-30;
-	else
-		delta_dist.y = fabs(1.0 / rd.y);
+	init_dda_variables(ray, &rd, &rmap, &delta_dist);
 	if (rd.x < 0)
 	{
 		step.x = -1;
@@ -83,14 +72,12 @@ void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point)
 		step.y = 1;
 		side_dist.y = (rmap.y + 1.0 - ray->fpos.y) * delta_dist.y;
 	}
-
-	/* DDA loop */
 	while (!hit)
 	{
 		/* bounds check */
-		if (rmap.x < 0 || rmap.x >= map->ref_map->dim.width || rmap.y < 0 || rmap.y >= map->ref_map->dim.height)
+		if (rmap.x < 0 || rmap.x >= map->ref_map->dim.width
+			|| rmap.y < 0 || rmap.y >= map->ref_map->dim.height)
 			break ;
-
 		if (side_dist.x < side_dist.y)
 		{
 			side_dist.x += delta_dist.x;
@@ -111,12 +98,10 @@ void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point)
 	}
 	if (hit)
 	{
-		
 		if (side == 0)
 			perp_dist = (rmap.x - ray->fpos.x + (1 - step.x) / 2.0) / rd.x;
 		else
 			perp_dist = (rmap.y - ray->fpos.y + (1 - step.y) / 2.0) / rd.y;
-
 		ray->hit.x = ray->fpos.x + rd.x * perp_dist;
 		ray->hit.y = ray->fpos.y + rd.y * perp_dist;
 		ray->pos.x = rmap.x;

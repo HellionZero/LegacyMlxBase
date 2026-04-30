@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:19:29 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 17:39:58 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/04/30 20:41:07 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,11 @@ int	render(void *param)
 	if (game->minimap)
 	{
 		render_minimap(game->minimap, game, 0);
-		/* draw rays (debug) and walls into main buffer */
 		cast_ray(game, data);
 		composite_minimap_to_main(data, game->minimap);
 	}
 	else
-	{
-		/* still render walls even without minimap */
 		cast_ray(game, data);
-	}
 	render_frame(data, game->window->mlx_ptr, game->window->win_ptr);
 	frame++;
 	return (0);
