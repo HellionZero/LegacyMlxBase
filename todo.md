@@ -44,6 +44,7 @@ fase 1: andamento: 75%
 [  ] testes de renderização de texturas
 [✅] implementação do algoritmo de detecção de lados
 
-próximos passos:
+*** RAYCASTER ***
 
-[  ] implementação do algoritmo principal do raycaster
+[  ] implementar o algoritmo de detecção de lados
+[  ] implementar o algoritmo principal do raycaster
