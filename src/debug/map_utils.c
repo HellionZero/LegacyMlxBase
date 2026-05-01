@@ -6,16 +6,17 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 14:25:05 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/01 19:38:51 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/01 20:00:57 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
-int count_map_rows(char **grid)
+int	count_map_rows(char **grid)
 {
-	int count = 0;
+	int	count;
 
+	count = 0;
 	if (!grid)
 		return (0);
 	while (grid[count])
@@ -23,10 +24,11 @@ int count_map_rows(char **grid)
 	return (count);
 }
 
-int count_map_columns(char **grid)
+int	count_map_columns(char **grid)
 {
-	int count = 0;
+	int	count;
 
+	count = 0;
 	if (!grid || !grid[0])
 		return (0);
 	while (grid[0][count])

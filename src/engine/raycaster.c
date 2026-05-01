@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 15:51:56 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/01 19:24:05 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/01 20:04:17 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,8 @@ void	draw_textured_column(t_game *game, t_data *data, int x, t_icoord t,
 
 	(void)t;
 	tex = game->wall_texture;
-	clamp_draw_bounds(line_h, data->height, &draw_bounds.start, &draw_bounds.end);
+	clamp_draw_bounds(line_h, data->height, &draw_bounds.start,
+		&draw_bounds.end);
 	tex_y = draw_bounds.start;
 	while (tex_y <= draw_bounds.end)
 	{
@@ -159,14 +160,16 @@ void	draw_flat_column(t_game *game, t_data *data, int x, t_icoord t,
 	t_render_cfg	cfg;
 
 	(void)t;
-	if (game && game->map && game->ray.pos.y >= 0 && game->ray.pos.y < game->map->dim.height
+	if (game && game->map && game->ray.pos.y >= 0
+		&& game->ray.pos.y < game->map->dim.height
 		&& game->ray.pos.x >= 0 && game->ray.pos.x < game->map->dim.width)
 	{
 		cell = game->map->grid[game->ray.pos.y][game->ray.pos.x];
 		(void)cell;
 		base_color = 0xAAAAAA;
 	}
-	clamp_draw_bounds(line_h, data->height, &draw_bounds.start, &draw_bounds.end);
+	clamp_draw_bounds(line_h, data->height, &draw_bounds.start,
+		&draw_bounds.end);
 	y = draw_bounds.start;
 	while (y <= draw_bounds.end)
 	{
@@ -180,9 +183,11 @@ void	draw_flat_column(t_game *game, t_data *data, int x, t_icoord t,
 			cfg.shadow_k = 0.25f;
 			cfg.light_intensity = 1.0f;
 		}
-		cfg.shade = calculate_shade_factor(perp, cfg.shadow_k, cfg.light_intensity);
+		cfg.shade = calculate_shade_factor(perp, cfg.shadow_k,
+				cfg.light_intensity);
 		cfg.base_color = hex_to_color(base_color);
-		cfg.shade_color = apply_side_darkening(cfg.base_color, game->ray.hit_side);
+		cfg.shade_color = apply_side_darkening(cfg.base_color,
+				game->ray.hit_side);
 		cfg.shade_color = apply_shade(cfg.shade_color, cfg.shade);
 		cfg.shaded_hex = color_to_hex(cfg.shade_color);
 		mlx_put_pixel(data, x, y, cfg.shaded_hex);

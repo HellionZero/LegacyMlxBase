@@ -12,8 +12,6 @@
 
 #include "../../include/cub.h"
 
-
-
 t_map	temp_map(void)
 {
 	static char	*grid[] = {
@@ -33,8 +31,6 @@ t_map	temp_map(void)
 	map.dim.height = count_map_rows(grid);
 	return (map);
 }
-
-
 
 static void	set_elements_position(t_game *game)
 {
