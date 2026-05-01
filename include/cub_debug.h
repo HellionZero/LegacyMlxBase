@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:06:23 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 14:34:34 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:39:06 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define CUB_DEBUG_H
 
 # include "cub_structs.h"
+
+int 	count_map_rows(char **grid);
+int 	count_map_columns(char **grid);
+int		is_orientation_char(char c);
 
 t_map	temp_map(void);
 void	init_map(t_game *game);

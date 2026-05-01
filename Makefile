@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/30 20:05:13 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/05/01 19:39:27 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC = main.c \
 
 DEBUG_DIR = debug
 SRC += $(DEBUG_DIR)/map_debug.c \
+		$(DEBUG_DIR)/map_utils.c \
 
 ENGINE_DIR = engine
 SRC += $(ENGINE_DIR)/movement.c \

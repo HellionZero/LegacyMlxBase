@@ -12,10 +12,13 @@
 
 #include "../../include/cub.h"
 
+
+
 t_map	temp_map(void)
 {
 	static char	*grid[] = {
-		"11111111111",
+		"   11111   ",
+		"11110001111",
 		"10000000001",
 		"1011000S001",
 		"10000100001",
@@ -26,15 +29,12 @@ t_map	temp_map(void)
 	map.ceiling_color = 0x87CEEB;
 	map.floor_color = 0x228B22;
 	map.grid = grid;
-	map.dim.width = 11;
-	map.dim.height = 5;
+	map.dim.width = count_map_columns(grid);
+	map.dim.height = count_map_rows(grid);
 	return (map);
 }
 
-static int	is_orientation_char(char c)
-{
-	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
-}
+
 
 static void	set_elements_position(t_game *game)
 {
@@ -77,9 +77,6 @@ void	init_map(t_game *game)
 		game->map->dim = map.dim;
 		game->map->floor_color = map.floor_color;
 		game->map->ceiling_color = map.ceiling_color;
-		fprintf(stderr, "init_map: game=%p map=%p map->grid=%p dim=(%d,%d)\n",
-			(void*)game, (void*)game->map, (void*)game->map->grid,
-			game->map->dim.width, game->map->dim.height);
 	}
 	set_elements_position(game);
 }

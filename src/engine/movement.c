@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:36:55 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 14:03:31 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/01 19:44:08 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,10 @@ void	move_player(t_player *player, t_map *map, float move_step)
 	new_pos_x.y = player->pos.y;
 	if (!rect_collides(map, new_pos_x, player->collision_radius))
 		player->pos.x = new_pos_x.x;
-	else
-		fprintf(stderr, "move_player: blocked X\n");
 	new_pos_y.x = player->pos.x;
 	new_pos_y.y = player->pos.y + (move_step * sinf(player->angle));
 	if (!rect_collides(map, new_pos_y, player->collision_radius))
-	{
 		player->pos.y = new_pos_y.y;
-	}
-	else
-		fprintf(stderr, "move_player: blocked Y\n");
 }
 
 void	strafe_player(t_player *player, t_map *map, float move_step)
@@ -63,14 +57,10 @@ void	strafe_player(t_player *player, t_map *map, float move_step)
 	new_pos_x.y = player->pos.y;
 	if (!rect_collides(map, new_pos_x, player->collision_radius))
 		player->pos.x = new_pos_x.x;
-	else
-		fprintf(stderr, "strafe_player: blocked X\n");
 	new_pos_y.x = player->pos.x;
 	new_pos_y.y = player->pos.y + (move_step * sinf(player->angle + PI / 2));
 	if (!rect_collides(map, new_pos_y, player->collision_radius))
 		player->pos.y = new_pos_y.y;
-	else
-		fprintf(stderr, "strafe_player: blocked Y\n");
 }
 
 void	set_directional_movement(int keycode, t_player *player, t_game *game)
