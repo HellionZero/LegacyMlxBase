@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:56:15 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 20:03:45 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/01 17:22:10 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "cub_structs.h"
 
-float 	*init_zbuffer(t_game *game);
+float	*init_zbuffer(t_game *game);
 
 int		is_position_walkable(t_map *map, float x, float y);
 void	move_player(t_player *player, t_map *map, float move_step);
@@ -27,9 +27,11 @@ void	player_to_frect(t_dcoord pos, float radius, t_frect *out);
 void	frect_sample_point(const t_frect *r, int i, int j,
 			t_dcoord *out);
 int		frect_collides_map(t_map *map, const t_frect *r, int i);
+void	init_ray(t_ray *ray, t_player *player, float ray_angle,
+			t_data *target);
 void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point);
-void	draw_ray_on_minimap(t_ray *ray, t_minimap *map, t_player *player,
-			t_dcoord *hit_point);
+void	draw_ray_on_minimap(t_ray *ray, t_minimap *map, t_dcoord *hit_point);
+void	render_ray(t_ray *ray, t_minimap *map);
 void	draw_fov_rays(t_player *player, t_minimap *map, t_data *target);
 
 void	init_camera(t_camera *camera, t_player *player);

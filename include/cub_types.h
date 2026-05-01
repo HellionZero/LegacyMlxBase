@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:23:00 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 20:24:47 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/01 18:53:13 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_icoord		t_icoord;
 typedef struct s_dcoord		t_dcoord;
 typedef struct s_fcoord		t_fcoord;
 typedef struct s_color		t_color;
+typedef struct s_point		t_point;
 
 enum e_points
 {
@@ -73,6 +74,12 @@ struct s_fcoord
 {
 	float	x;
 	float	y;
+};
+
+struct s_point
+{
+	int start;
+	int end;
 };
 
 struct s_dim

@@ -34,6 +34,9 @@ static void	init_null_defaults(t_game *game)
 	game->config.shadow_factor = 0.1f;
 	game->config.max_render_distance = 100;
 	game->config.render_quality = 1;
+	ft_bzero(&game->input, sizeof(t_input));
+	ft_bzero(&game->player_rect, sizeof(t_frect));
+	ft_bzero(&game->ray, sizeof(t_ray));
 }
 
 void	init_game(t_game *game)

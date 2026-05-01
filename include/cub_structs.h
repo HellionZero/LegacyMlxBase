@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 17:54:50 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/01 18:36:26 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct s_minimap	t_minimap;
 typedef struct s_player		t_player;
 typedef struct s_camera		t_camera;
 typedef struct s_ray		t_ray;
+typedef struct s_dda		t_dda;
+typedef struct s_wall		t_wall;
+typedef struct s_illum		t_illum;
 typedef struct s_data		t_data;
 typedef struct s_line		t_line;
 typedef struct s_frect		t_frect;
@@ -103,11 +106,23 @@ struct s_image
 
 struct s_render_cfg
 {
-	float	fog_distance;
-	float	light_intensity;
-	float	shadow_factor;
-	int		max_render_distance;
-	int		render_quality;
+	float			fog_distance;
+	float			ray_distance;
+	float			light_intensity;
+	float			shadow_factor;
+	float			shade;
+	float			shadow_k;
+	int				max_render_distance;
+	int				render_quality;
+	t_color			base_color;
+	t_color			shade_color;
+	t_color			tex_color;
+	unsigned int	shaded_hex;
+};
+
+struct s_wall
+{
+	
 };
 
 struct s_map
@@ -121,6 +136,7 @@ struct s_map
 struct s_ray
 {
 	t_data		*data;
+	t_player	*player;
 	t_icoord	pos;
 	t_icoord	dir;
 	t_dcoord	fpos;
@@ -131,6 +147,17 @@ struct s_ray
 	int			hit_sprite;
 	int			hit_side; /* 0 = vertical (x), 1 = horizontal (y) */
 	int			color;
+};
+
+struct s_dda
+{
+	t_icoord	rmap;
+	t_dcoord	rd;
+	t_dcoord	delta_dist;
+	t_dcoord	side_dist;
+	t_icoord	step;
+	int			hit;
+	int			side;
 };
 
 struct s_camera
