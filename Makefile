@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/05/01 19:39:27 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/05/04 16:14:09 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,10 @@ SRC += $(ENGINE_DIR)/movement.c \
 		$(ENGINE_DIR)/collision.c \
 		$(ENGINE_DIR)/engine_utils.c \
 		$(ENGINE_DIR)/dda.c \
-		$(ENGINE_DIR)/raycaster.c \
+		$(ENGINE_DIR)/raycaster_init.c \
 		$(ENGINE_DIR)/raycaster_color.c \
+		$(ENGINE_DIR)/raycaster_column.c \
+		$(ENGINE_DIR)/raycaster_utils.c \
 
 INPUT_DIR = input
 SRC += $(INPUT_DIR)/arrows.c \
@@ -52,6 +54,7 @@ RENDER_DIR = render
 SRC += $(RENDER_DIR)/render.c \
 	   $(RENDER_DIR)/minimap_layer.c \
 	   $(RENDER_DIR)/minimap_layer_utils.c \
+	   $(RENDER_DIR)/raycaster_layer.c \
 	   $(RENDER_DIR)/bg_layer.c \
 	   $(RENDER_DIR)/pixel.c \
 	   $(RENDER_DIR)/shapes.c \

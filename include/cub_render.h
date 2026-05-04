@@ -65,5 +65,6 @@ void		render_texture(t_data *data, t_image *texture, t_icoord pos);
 void		draw_textured_rectangle(t_data *data, t_icoord pos, t_dim dim,
 				t_image *texture);
 void		remove_texture(void *mlx_ptr, t_image *texture);
+t_image		*get_directional_texture(t_game *game);
 
 #endif

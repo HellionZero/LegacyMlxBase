@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:39 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 16:28:04 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/04 14:26:53 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,47 @@ static void	remove_all_textures(t_game *game)
 			remove_texture(game->window->mlx_ptr, game->floor_texture);
 		if (game->ceiling_texture)
 			remove_texture(game->window->mlx_ptr, game->ceiling_texture);
+		if (game->map)
+		{
+			if (game->map->north_texture)
+				remove_texture(game->window->mlx_ptr,
+					game->map->north_texture);
+			if (game->map->south_texture)
+				remove_texture(game->window->mlx_ptr,
+					game->map->south_texture);
+			if (game->map->west_texture)
+				remove_texture(game->window->mlx_ptr,
+					game->map->west_texture);
+			if (game->map->east_texture)
+				remove_texture(game->window->mlx_ptr,
+					game->map->east_texture);
+		}
 	}
 }
 
-static void	remove_buffer_data(t_game *game)
+static void	remove_buffer_data_without_map(t_game *game)
 {
 	if (game->minimap)
 		destroy_minimap(game->minimap);
 	if (game->player)
 		destroy_player(game->player);
-	if (game->map)
-		free(game->map);
 	if (game->z_buffer)
 		free(game->z_buffer);
+}
+
+static void	remove_buffer_data(t_game *game)
+{
+	if (game->map)
+		free(game->map);
 }
 
 void	free_game(t_game *game)
 {
 	if (game)
 	{
-		remove_buffer_data(game);
 		if (game->window)
 		{
+			remove_buffer_data_without_map(game);
 			remove_all_textures(game);
 			if (game->window->img_ptr)
 				free_pixel_data(game->window->img_ptr,
@@ -58,6 +77,7 @@ void	free_game(t_game *game)
 			}
 			free(game->window);
 		}
+		remove_buffer_data(game);
 		free(game);
 	}
 }

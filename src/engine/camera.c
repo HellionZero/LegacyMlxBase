@@ -6,21 +6,11 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 15:58:35 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 17:58:25 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/04 16:15:50 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
-
-void	init_camera(t_camera *camera, t_player *player)
-{
-	camera->pos = player->pos;
-	camera->dir = (t_dcoord){cosf(player->angle), sinf(player->angle)};
-	camera->plane = (t_dcoord){-camera->dir.y * 0.66f,
-		camera->dir.x * 0.66f};
-	camera->screen_dim = (t_icoord){WINDOW_WIDTH, WINDOW_HEIGHT};
-	camera->inv_screen_width = 1.0f / (float)WINDOW_WIDTH;
-}
 
 void	rotate_camera(t_camera *camera, float angle)
 {

@@ -29,6 +29,14 @@ t_map	temp_map(void)
 	map.grid = grid;
 	map.dim.width = count_map_columns(grid);
 	map.dim.height = count_map_rows(grid);
+	map.north_path = "src/assets/img_xpm/north_texture.xpm";
+	map.south_path = "src/assets/img_xpm/south_texture.xpm";
+	map.west_path = "src/assets/img_xpm/west_texture.xpm";
+	map.east_path = "src/assets/img_xpm/east_texture.xpm";
+	map.north_texture = NULL;
+	map.south_texture = NULL;
+	map.west_texture = NULL;
+	map.east_texture = NULL;
 	return (map);
 }
 
@@ -73,6 +81,18 @@ void	init_map(t_game *game)
 		game->map->dim = map.dim;
 		game->map->floor_color = map.floor_color;
 		game->map->ceiling_color = map.ceiling_color;
+		game->map->north_path = map.north_path;
+		game->map->south_path = map.south_path;
+		game->map->west_path = map.west_path;
+		game->map->east_path = map.east_path;
+		game->map->north_texture = load_texture(game->window->mlx_ptr,
+				map.north_path);
+		game->map->south_texture = load_texture(game->window->mlx_ptr,
+				map.south_path);
+		game->map->west_texture = load_texture(game->window->mlx_ptr,
+				map.west_path);
+		game->map->east_texture = load_texture(game->window->mlx_ptr,
+				map.east_path);
 	}
 	set_elements_position(game);
 }

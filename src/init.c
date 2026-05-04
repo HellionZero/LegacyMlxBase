@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:32:26 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 20:40:39 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/04 14:33:37 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,8 @@ void	init_game(t_game *game)
 	game->player = create_player();
 	if (!game->player)
 		alert_and_exit("Failed to create player\n", game);
-	fprintf(stderr, "init_game: init_map\n");
 	init_map(game);
-	fprintf(stderr, "init_game: setting ray.data\n");
 	game->ray.data = game->window->img_ptr;
-	fprintf(stderr, "init_game: creating minimap\n");
 	game->minimap = create_minimap(game);
 	if (!game->minimap)
 		alert_and_exit("Failed to create minimap\n", game);
