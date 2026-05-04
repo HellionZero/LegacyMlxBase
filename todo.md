@@ -25,8 +25,7 @@ _atualização: 28/04/2026_
 
 [✅] implementar detecção de teclas (setas, etc)
 [✅] implementar movimentação do player
-[  ] implementar movimentação da câmera
-[  ] implementar interação com o ambiente (portas, etc)
+[✅] implementar movimentação da câmera
 
 _atualização: 29/04/2026_
 
@@ -50,9 +49,16 @@ fase 1: andamento: 75%
 [✅] implementar função de sombreamento interativo
 [  ] implementar a renderização de texturas no raycaster
 
-_nota_
+atualização: 04/05/2026
 
-- o raycasting necessita de refatoração para melhorar a organização e legibilidade do código. 
-- funções precisam ser redirecionadas para arquivos específicos, visto que ainda há funcionalidades misturadas em arquivos como o engine_utils.c.
-- a implementação do raycasting deve ser adaptada para considerar o tamanho do player, visto que a implementação atual é baseada em um ponto central.
-- 
+[✅] refatoração do código para melhorar a organização e legibilidade
+[✅] implementação da função de renderização de colunas de parede
+[✅] implementação da função de renderização de colunas de parede com texturas
+
+próximos passos:
+
+[  ] ajustes finais do minimapa
+[  ] conexão entre o parser e o render para obter os dados do mapa, texturas e cores
+
+
+

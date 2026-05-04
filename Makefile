@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/05/04 16:14:09 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/05/04 17:02:48 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ SRC += $(ENGINE_DIR)/movement.c \
 		$(ENGINE_DIR)/first_ray.c \
 		$(ENGINE_DIR)/vision_ray.c \
 		$(ENGINE_DIR)/collision.c \
-		$(ENGINE_DIR)/engine_utils.c \
 		$(ENGINE_DIR)/dda.c \
 		$(ENGINE_DIR)/raycaster_init.c \
 		$(ENGINE_DIR)/raycaster_color.c \

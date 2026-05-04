@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:23:00 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/01 18:53:13 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/04 17:04:42 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ struct s_fcoord
 
 struct s_point
 {
-	int start;
-	int end;
+	int	start;
+	int	end;
 };
 
 struct s_dim

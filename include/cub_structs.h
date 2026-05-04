@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/04 14:54:25 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/04 17:05:40 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,18 +133,18 @@ struct s_column
 
 struct s_wall_ctx
 {
-	double wall_x;
-	t_image *texture;
-	int tex_x;
-	int hit_side;
+	double	wall_x;
+	t_image	*texture;
+	int		tex_x;
+	int		hit_side;
 };
 
 struct s_map
 {
-	t_image 		*north_texture;
-	t_image 		*south_texture;
-	t_image 		*west_texture;
-	t_image 		*east_texture;
+	t_image			*north_texture;
+	t_image			*south_texture;
+	t_image			*west_texture;
+	t_image			*east_texture;
 	char			*north_path;
 	char			*south_path;
 	char			*west_path;
