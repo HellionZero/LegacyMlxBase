@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:20:34 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 14:03:31 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 16:27:21 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,15 @@ void	render_minimap(t_minimap *minimap, t_game *game, int wall_count)
 	grid_pos.y = 0;
 	while (grid_pos.y < minimap->ref_map->dim.height)
 	{
-		grid_pos.x = 0;
-		while (grid_pos.x < minimap->ref_map->dim.width)
+		if (!minimap->ref_map->grid[grid_pos.y])
 		{
-			if (minimap->ref_map->grid[grid_pos.y]
-				&& minimap->ref_map->grid[grid_pos.y][grid_pos.x] == '1')
+			grid_pos.y++;
+			continue ;
+		}
+		grid_pos.x = 0;
+		while (grid_pos.x < (int)ft_strlen(minimap->ref_map->grid[grid_pos.y]))
+		{
+			if (minimap->ref_map->grid[grid_pos.y][grid_pos.x] == '1')
 			{
 				draw_grid_tile(minimap, grid_pos);
 				wall_count++;

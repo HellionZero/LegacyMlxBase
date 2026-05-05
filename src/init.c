@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:32:26 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/04 14:33:37 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 15:51:50 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,24 @@ static void	init_null_defaults(t_game *game)
 	ft_bzero(&game->ray, sizeof(t_ray));
 }
 
-void	init_game(t_game *game)
+void	init_game(t_game *game, char **argv)
 {
-	if (!game)
+	if (!game || !argv || !argv[1])
 		return ;
 	game->window = create_window(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D");
 	if (!game->window)
 		alert_and_exit("Failed to create window\n", game);
 	init_null_defaults(game);
+	game->map = init_map();
+	if (!game->map)
+		alert_and_exit("Failed to initialize map\n", game);
+	if (parse_map(game->map, argv[1]) != 0)
+		alert_and_exit("Failed to parse map\n", game);
 	init_timer(&game->timer);
 	game->player = create_player();
 	if (!game->player)
 		alert_and_exit("Failed to create player\n", game);
-	init_map(game);
+	load_map_textures_and_player(game);
 	game->ray.data = game->window->img_ptr;
 	game->minimap = create_minimap(game);
 	if (!game->minimap)

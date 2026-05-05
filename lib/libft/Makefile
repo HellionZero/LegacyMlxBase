@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/12 17:38:39 by lsarraci          #+#    #+#              #
-#    Updated: 2026/04/09 17:23:09 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/05/05 16:01:25 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRC = ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c \
 		ft_realloc.c \
+		ft_split_size.c \
 		get_next_line.c
 
 OBJ = $(SRC:.c=.o) 

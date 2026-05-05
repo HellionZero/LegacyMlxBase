@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:44:18 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/10 18:30:37 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 15:58:14 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char	*ft_strstr(const char *haystack, const char *needle);
+int		ft_split_size(char **split);
 char	*get_next_line(int fd);
 
 #endif

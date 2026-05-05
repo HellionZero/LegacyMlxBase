@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 12:48:11 by lsarraci          #+#    #+#             */
-/*   Updated: 2025/07/30 18:46:23 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 16:28:13 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	size_t	j;
 
-	i = 0;
-	j = ft_strlen(s1) - 1;
 	if (ft_strlen(s1) == 0)
 		return (ft_strdup(""));
+	i = 0;
+	j = ft_strlen(s1) - 1;
 	while (ft_trimmer((char *)set, s1[i]))
 		i++;
-	while (ft_trimmer((char *)set, s1[j]))
+	while (ft_trimmer((char *)set, s1[j]) && j > 0)
 		j--;
 	return (final_char(s1, i, j - (i - 1)));
 }

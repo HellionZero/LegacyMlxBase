@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:49 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 14:42:23 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 15:54:27 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@
 # include "cub_types.h"
 # include "cub_utils.h"
 # include "cub_render.h"
-# include "cub_debug.h"
 # include "cub_input.h"
 # include "cub_engine.h"
+# include "cub_parser.h"
+# include "cub_validation.h"
 
 int			handle_key_press(int keycode, void *param);
 int			handle_close(void *param);
@@ -37,7 +38,8 @@ t_window	*create_window(int width, int height, char *title);
 void		close_window(void *param);
 void		setup_hooks(void *param);
 void		free_game(t_game *game);
-void		init_game(t_game *game);
+void		init_game(t_game *game, char **argv);
+void		load_map_textures_and_player(t_game *game);
 void		init_timer(t_timer *timer);
 void		update_timer(t_timer *timer);
 

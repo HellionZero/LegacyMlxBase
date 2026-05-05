@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/04 17:05:40 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 15:38:36 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,6 +280,7 @@ struct s_game
 	t_image			*floor_texture;
 	t_image			*ceiling_texture;
 	t_minimap		*minimap;
+	char			*map_file;
 	float			*z_buffer;
 };
 
