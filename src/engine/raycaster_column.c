@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 15:41:31 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/04 16:12:55 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:40:03 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void	render_wall_column(t_game *game, t_data *data, int x, float perp)
 	if (tex)
 	{
 		if (game->ray.hit_side == 0)
-			wall_x = game->ray.hit.y + fmod(game->ray.hit.y, 1.0);
+			wall_x = fmod(game->ray.hit.y, 1.0);
 		else
-			wall_x = game->ray.hit.x + fmod(game->ray.hit.x, 1.0);
-		wall_x_frac = wall_x - floor(wall_x);
+			wall_x = fmod(game->ray.hit.x, 1.0);
+		wall_x_frac = wall_x;
 		if ((game->ray.hit_side == 0 && game->ray.fdir.x < 0)
 			|| (game->ray.hit_side == 1 && game->ray.fdir.y > 0))
 			wall_x_frac = 1.0 - wall_x_frac;
