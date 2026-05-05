@@ -40,14 +40,14 @@ fase 1: andamento: 75%
 
 [✅] preparação da implementação do algoritmo de detecção de lados
 [✅] implementação do layer do background
-[  ] testes de renderização de texturas
+[✅] testes de renderização de texturas
 [✅] implementação do algoritmo de detecção de lados
 
 *** RAYCASTER ***
 
 [✅] implementar o algoritmo de dda para o raycasting
 [✅] implementar função de sombreamento interativo
-[  ] implementar a renderização de texturas no raycaster
+[✅] implementar a renderização de texturas no raycaster
 
 atualização: 04/05/2026
 
@@ -57,8 +57,8 @@ atualização: 04/05/2026
 
 próximos passos:
 
-[  ] ajustes finais do minimapa
-[  ] conexão entre o parser e o render para obter os dados do mapa, texturas e cores
+[✅] conexão entre o parser e o render para obter os dados do mapa, texturas e cores
 
+status do projeto: finalizado, aguardando revisão e feedbacks
 
 
