@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/05 15:38:36 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:05:46 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ struct s_ray
 	float		length;
 	int			hit_wall;
 	int			hit_sprite;
-	int			hit_side; /* 0 = vertical (x), 1 = horizontal (y) */
+	int			hit_side;
 	int			color;
 };
 
@@ -276,9 +276,6 @@ struct s_game
 	t_map			*map;
 	t_ray			ray;
 	t_render_cfg	config;
-	t_image			*wall_texture;
-	t_image			*floor_texture;
-	t_image			*ceiling_texture;
 	t_minimap		*minimap;
 	char			*map_file;
 	float			*z_buffer;

@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:19:29 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 20:41:07 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:36:59 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	render(void *param)
 	render_background(data, game);
 	if (game->minimap)
 	{
-		render_minimap(game->minimap, game, 0);
+		render_minimap(game->minimap, game);
 		cast_ray(game, data);
 		composite_minimap_to_main(data, game->minimap);
 	}

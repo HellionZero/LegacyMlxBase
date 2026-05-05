@@ -6,11 +6,33 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 19:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/04/30 15:34:53 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:32:30 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
+
+void	draw_tile_at(t_minimap *minimap, t_icoord pos,
+			t_dim tile_dim, int color)
+{
+	if (!minimap || !minimap->buffer)
+		return ;
+	draw_rectangle(minimap->buffer, pos, tile_dim, color);
+}
+
+void	draw_grid_tile(t_minimap *minimap, t_icoord grid_pos)
+{
+	t_dim		tile_dim;
+	t_icoord	screen_pos;
+
+	if (!minimap)
+		return ;
+	screen_pos.x = (int)((grid_pos.x * minimap->scale) + minimap->offset.x);
+	screen_pos.y = (int)((grid_pos.y * minimap->scale) + minimap->offset.y);
+	tile_dim.width = (int)minimap->scale;
+	tile_dim.height = (int)minimap->scale;
+	draw_tile_at(minimap, screen_pos, tile_dim, 0xFFFFFF);
+}
 
 void	set_minimap_addresses(t_data *main_buffer, t_minimap *mmap,
 				t_icoord *pos, t_icoord *dst)

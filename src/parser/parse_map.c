@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 20:09:00 by bmoreira          #+#    #+#             */
-/*   Updated: 2026/05/05 16:38:27 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 16:54:31 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,61 @@ t_map	*init_map(void)
 
 void	parse_grid(t_map *map, int fd, char *line)
 {
-char*buffer;
-char*tmp;
+	char	*buffer;
+	char	*tmp;
 
-buffer = ft_strdup("");
-if (!buffer)
-error_handler(map, NULL, JOIN_CONTENT);
-while (line)
-{
-tmp = ft_strjoin(buffer, line);
-if (!tmp)
-{
-free(buffer);
-error_handler(map, NULL, JOIN_CONTENT);
+	buffer = ft_strdup("");
+	if (!buffer)
+		error_handler(map, NULL, JOIN_CONTENT);
+	while (line)
+	{
+		tmp = ft_strjoin(buffer, line);
+		if (!tmp)
+		{
+			free(buffer);
+			error_handler(map, NULL, JOIN_CONTENT);
+		}
+		free(buffer);
+		buffer = tmp;
+		free(line);
+		line = get_next_line(fd);
+	}
+	map->grid = ft_split(buffer, '\n');
+	map->dim.width = count_map_columns(map->grid);
+	map->dim.height = count_map_rows(map->grid);
+	free(buffer);
+	close(fd);
 }
-free(buffer);
-buffer = tmp;
-free(line);
-line = get_next_line(fd);
-}
-map->grid = ft_split(buffer, '\n');
-map->dim.width = count_map_columns(map->grid);
-map->dim.height = count_map_rows(map->grid);
-free(buffer);
-close(fd);
+
+static int	process_config_line(t_map *map, char *line)
+{
+	char	*trimmed;
+	char	**parts;
+
+	trimmed = ft_strtrim(line, " \t\n");
+	if (!trimmed || trimmed[0] == '\0')
+	{
+		free(trimmed);
+		free(line);
+		return (2);
+	}
+	parts = ft_split(trimmed, ' ');
+	free(trimmed);
+	if (parts[0] && (is_valid_texture(parts[0]) || is_valid_color(parts[0])))
+	{
+		parse_element(map, line);
+		ft_free_split(parts);
+		return (0);
+	}
+	ft_free_split(parts);
+	return (1);
 }
 
 int	parse_map(t_map *map, char *file_name)
 {
 	char	*line;
-	char	*trimmed;
-	char	**parts;
-	int	fd;
-	int	is_texture;
-	int	is_color;
+	int		fd;
+	int		status;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
@@ -70,30 +91,16 @@ int	parse_map(t_map *map, char *file_name)
 	line = get_next_line(fd);
 	while (line)
 	{
-		trimmed = ft_strtrim(line, " \t\n");
-		if (!trimmed || trimmed[0] == '\0')
-		{
-			free(line);
-			free(trimmed);
+		status = process_config_line(map, line);
+		if (status == 2)
 			line = get_next_line(fd);
-			continue ;
-		}
-		parts = ft_split(trimmed, ' ');
-		is_texture = (parts[0] != NULL) && is_valid_texture(parts[0]);
-		is_color = (parts[0] != NULL) && is_valid_color(parts[0]);
-		ft_free_split(parts);
-		free(trimmed);
-
-		if (is_texture || is_color)
-		{
-			parse_element(map, line);
-		}
+		else if (status == 0)
+			line = get_next_line(fd);
 		else
 		{
 			parse_grid(map, fd, line);
 			return (0);
 		}
-		line = get_next_line(fd);
 	}
 	close(fd);
 	return (0);

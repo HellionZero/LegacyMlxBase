@@ -6,33 +6,11 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:20:34 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/05 16:27:21 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:35:54 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
-
-static void	draw_tile_at(t_minimap *minimap, t_icoord pos,
-			t_dim tile_dim, int color)
-{
-	if (!minimap || !minimap->buffer)
-		return ;
-	draw_rectangle(minimap->buffer, pos, tile_dim, color);
-}
-
-static void	draw_grid_tile(t_minimap *minimap, t_icoord grid_pos)
-{
-	t_dim		tile_dim;
-	t_icoord	screen_pos;
-
-	if (!minimap)
-		return ;
-	screen_pos.x = (int)((grid_pos.x * minimap->scale) + minimap->offset.x);
-	screen_pos.y = (int)((grid_pos.y * minimap->scale) + minimap->offset.y);
-	tile_dim.width = (int)minimap->scale;
-	tile_dim.height = (int)minimap->scale;
-	draw_tile_at(minimap, screen_pos, tile_dim, 0xFFFFFF);
-}
 
 void	draw_player_on_minimap(t_minimap *minimap, t_game *game)
 {
@@ -54,35 +32,42 @@ void	draw_player_on_minimap(t_minimap *minimap, t_game *game)
 	draw_tile_at(minimap, screen_pos, tile_dim, GREEN);
 }
 
-void	render_minimap(t_minimap *minimap, t_game *game, int wall_count)
+static void	draw_minimap_grid(t_minimap *minimap)
 {
 	t_icoord	grid_pos;
+	int			len;
 
-	if (!minimap || !minimap->buffer || !minimap->ref_map
-		|| !minimap->ref_map->grid || !game || !game->player)
-		return ;
-	calculate_minimap_offset(minimap, game);
-	clear_buffer(minimap->buffer, 0x1a1a1a);
 	grid_pos.y = 0;
 	while (grid_pos.y < minimap->ref_map->dim.height)
 	{
-		if (!minimap->ref_map->grid[grid_pos.y])
+		if (minimap->ref_map->grid[grid_pos.y])
 		{
-			grid_pos.y++;
-			continue ;
-		}
-		grid_pos.x = 0;
-		while (grid_pos.x < (int)ft_strlen(minimap->ref_map->grid[grid_pos.y]))
-		{
-			if (minimap->ref_map->grid[grid_pos.y][grid_pos.x] == '1')
+			len = ft_strlen(minimap->ref_map->grid[grid_pos.y]);
+			grid_pos.x = 0;
+			while (grid_pos.x < len)
 			{
-				draw_grid_tile(minimap, grid_pos);
-				wall_count++;
+				if (minimap->ref_map->grid[grid_pos.y][grid_pos.x] == '1')
+					draw_grid_tile(minimap, grid_pos);
+				grid_pos.x++;
 			}
-			grid_pos.x++;
 		}
 		grid_pos.y++;
 	}
+}
+
+static void	setup_minimap_render(t_minimap *minimap, t_game *game)
+{
+	calculate_minimap_offset(minimap, game);
+	clear_buffer(minimap->buffer, 0x1a1a1a);
+}
+
+void	render_minimap(t_minimap *minimap, t_game *game)
+{
+	if (!minimap || !minimap->buffer || !minimap->ref_map
+		|| !minimap->ref_map->grid || !game || !game->player)
+		return ;
+	setup_minimap_render(minimap, game);
+	draw_minimap_grid(minimap);
 	render_player_and_ray(game, minimap);
 }
 

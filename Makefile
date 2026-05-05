@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/05/05 15:52:45 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/05/05 17:15:08 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = main.c \
 	  init.c \
 	  hooks.c \
 	  window.c \
+	  frees.c \
 
 ENGINE_DIR = engine
 SRC += $(ENGINE_DIR)/movement.c \

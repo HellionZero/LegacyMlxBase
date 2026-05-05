@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:08:49 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/05 15:54:27 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:09:19 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ void		init_game(t_game *game, char **argv);
 void		load_map_textures_and_player(t_game *game);
 void		init_timer(t_timer *timer);
 void		update_timer(t_timer *timer);
+
+void		remove_all_textures(t_game *game);
 
 #endif

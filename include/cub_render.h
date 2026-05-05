@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 17:26:20 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/04 17:08:31 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:35:46 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,12 @@ t_dcoord		camera_dir_unit(const t_camera *camera);
 unsigned int	sample_shade_pixel(unsigned int color, float dist,
 					int side, const t_game *game);
 void			cast_ray(t_game *game, t_data *data);
+
+void			draw_tile_at(t_minimap *minimap, t_icoord pos,
+					t_dim tile_dim, int color);
+void			draw_grid_tile(t_minimap *minimap, t_icoord grid_pos);
+
+void			render_minimap(t_minimap *minimap, t_game *game);
+void			composite_minimap_to_main(t_data *main_buffer, t_minimap *minimap);
 
 #endif

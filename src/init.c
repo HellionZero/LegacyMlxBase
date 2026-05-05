@@ -21,9 +21,6 @@ static void	alert_and_exit(char *message, t_game *game)
 
 static void	init_null_defaults(t_game *game)
 {
-	game->wall_texture = NULL;
-	game->floor_texture = NULL;
-	game->ceiling_texture = NULL;
 	game->map = NULL;
 	game->player = NULL;
 	game->minimap = NULL;
