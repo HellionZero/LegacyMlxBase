@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:56:15 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/04 17:11:46 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/07 18:07:15 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void			render_ray(t_ray *ray, t_minimap *map);
 void			render_first_ray(t_player *player, t_minimap *map, t_ray *ray);
 
 void			draw_fov_rays(t_player *player, t_minimap *map, t_data *target);
+void			draw_debug_rays(t_player *player, t_minimap *map, t_data *target);
 
 /* -------------------DDA related functions ------------------- */
 

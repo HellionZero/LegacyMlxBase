@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 18:14:07 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/01 17:15:46 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/07 18:11:10 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	set_fov_rays(t_player *player, t_ray *left,
 	float		fov;
 	float		half_fov;
 
-	fov = 60.0f * (PI / 180.0f);
+	fov = 70.0f * (PI / 180.0f);
 	half_fov = fov / 2.0f;
 	dir = (t_dcoord){cosf(player->angle), sinf(player->angle)};
 	rotate_ray(dir, -half_fov, &rotated);

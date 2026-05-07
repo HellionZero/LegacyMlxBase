@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:23:00 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/07 16:56:08 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/07 18:05:48 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000
 # define YELLOW 0xFFFF00
+# define CYAN 0x00FFFF
 
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
