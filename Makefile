@@ -6,7 +6,7 @@
 #    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/17 15:15:33 by lsarraci          #+#    #+#              #
-#    Updated: 2026/05/05 17:15:08 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/05/07 17:25:44 by lsarraci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,8 +68,8 @@ SRC += $(RENDER_DIR)/render.c \
 
 UTILS_DIR = utils
 SRC += $(UTILS_DIR)/time_utils.c \
-	   $(UTILS_DIR)/minimap_player.c \
-	   $(UTILS_DIR)/minimap_utils.c \
+	   $(UTILS_DIR)/player.c \
+	   $(UTILS_DIR)/offset.c \
 	   $(UTILS_DIR)/minimap.c \
 
 

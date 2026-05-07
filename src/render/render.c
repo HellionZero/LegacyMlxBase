@@ -6,12 +6,11 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:19:29 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/05 17:36:59 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/07 17:42:58 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
-#include <stdio.h>
 
 static int	update_input_render(t_game *game)
 {

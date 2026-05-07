@@ -1,7 +1,7 @@
-NO assets/textures/Wall1.xpm
-SO assets/textures/Wall1.xpm
-WE assets/textures/Wall1.xpm
-EA assets/textures/Wall1.xpm
+NO assets/textures/north_texture.xpm
+SO assets/textures/south_texture.xpm
+WE assets/textures/west_texture.xpm
+EA assets/textures/east_texture.xpm
 F 139,69,19
 C 173,216,227
 

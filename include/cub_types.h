@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 15:23:00 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/04 17:04:42 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/07 16:56:08 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct s_fcoord		t_fcoord;
 typedef struct s_color		t_color;
 typedef struct s_point		t_point;
 
+/*e_points: enumeration to represent the main
+nine points of a rectangle. 
+subject to future implementation */
 enum e_points
 {
 	TOP_LEFT,
@@ -50,6 +53,7 @@ enum e_points
 	CENTER
 };
 
+/*e_sides: enumeration to represent the four sides of a rectangle */
 enum e_sides
 {
 	TOP,
@@ -58,36 +62,44 @@ enum e_sides
 	RIGHT
 };
 
+/*s_icoord: structure to represent integer coordinates */
 struct s_icoord
 {
 	int	x;
 	int	y;
 };
 
+/*s_dcoord: structure to represent double coordinates */
 struct s_dcoord
 {
 	double	x;
 	double	y;
 };
 
+/*s_fcoord: structure to represent float coordinates */
 struct s_fcoord
 {
 	float	x;
 	float	y;
 };
 
+/*s_point: structure to represent a point */
 struct s_point
 {
 	int	start;
 	int	end;
 };
 
+/*s_dim: structure to represent dimensions */
 struct s_dim
 {
 	int	width;
 	int	height;
 };
 
+/*s_color: structure to represent a color, 
+utilizing RGB values. all values of the variables
+can be manipulated with bitwise operations */
 struct s_color
 {
 	unsigned int	red;
