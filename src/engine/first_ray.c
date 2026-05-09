@@ -6,12 +6,23 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:07:25 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/04 16:14:19 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 17:25:55 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
+/**
+ * auxiliary function to find the first wall hit by the ray.
+ * 
+ * Is needed to keep tha main trace ray function clean
+ * and focused on the overall ray checking process, 
+ * while this function handles the specific logic 
+ * of stepping through the grid an checking for wall hits, 
+ * ensuring efficient and organized code flow.
+ * @param dda The DDA structure containing the ray information
+ * @param map The minimap structure containing the grid and its dimensions
+ */
 static void	find_wall_hit(t_dda *dda, t_minimap *map)
 {
 	dda->hit = 0;

@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 19:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/07 18:11:10 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 17:44:28 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,6 @@ void	render_player_and_ray(t_game *game, t_minimap *minimap)
 		render_first_ray(game->player, minimap, &game->ray);
 	}
 }
+/* additionally you can use draw_fov_rays under the 
+render_first_ray function to view the field of view
+rays for debugging. */
