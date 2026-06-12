@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validator.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: barbara.drummond <barbara.drummond@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 16:55:19 by bmoreira          #+#    #+#             */
-/*   Updated: 2026/05/05 16:36:24 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 23:55:32 by barbara.dru      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,22 @@ int	is_valid_texture(char *id)
 		|| !ft_strcmp(id, "SO")
 		|| !ft_strcmp(id, "WE")
 		|| !ft_strcmp(id, "EA"));
+}
+
+int	is_valid_map_line(char *line)
+{
+	int	i;
+
+	if (!line)
+		return (0);
+	i = 0;
+	while (line[i])
+	{
+		if (!(line[i] == '0' || line[i] == '1' || line[i] == ' '
+				|| line[i] == '\t' || line[i] == 'N' || line[i] == 'S'
+				|| line[i] == 'E' || line[i] == 'W' || line[i] == '\n'))
+			return (0);
+		i++;
+	}
+	return (1);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+         #
+#    By: bmoreira <bmoreira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/12 17:38:39 by lsarraci          #+#    #+#              #
-#    Updated: 2026/05/05 16:01:25 by lsarraci         ###   ########.fr        #
+#    Updated: 2026/05/09 19:09:59 by bmoreira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = ft_atoi.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
 		ft_lstsize.c \
+		ft_matrix_dup.c \
 		ft_memchr.c \
 		ft_memcmp.c \
 		ft_memcpy.c \

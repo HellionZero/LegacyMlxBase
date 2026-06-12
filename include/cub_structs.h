@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_structs.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmoreira <bmoreira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/07 16:48:20 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 19:36:13 by bmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,7 @@ south_path: the file path to the texture for the south wall
 west_path: the file path to the texture for the west wall
 east_path: the file path to the texture for the east wall
 grid: a 2D array of characters representing the map layout
+player: pointer to the player data parsed from the map
 dim: structure that holds the width and height of the map
 floor_color: the color used for the floor,
 represented as an unsigned integer
@@ -251,6 +252,7 @@ struct s_map
 	char			*west_path;
 	char			*east_path;
 	char			**grid;
+	t_player		*player;
 	t_dim			dim;
 	unsigned int	floor_color;
 	unsigned int	ceiling_color;
@@ -459,8 +461,6 @@ timer: 		structure that holds timing information for the game,
 			used for the control the game's timing.
 input:		structure that holds the input state for the game,
 			used for the handling of keyboard input events.
-player:		pointer to the player structure, used to access the
-			player's position, direction and other attributes.
 player_rect: structure that holds the data for the player's collision rectangle,
 			used for collision detection.
 map: 		pointer to the map structure, used to access the map layout,
@@ -485,7 +485,6 @@ struct s_game
 	t_window		*window;
 	t_timer			timer;
 	t_input			input;
-	t_player		*player;
 	t_frect			player_rect;
 	t_map			*map;
 	t_ray			ray;

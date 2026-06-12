@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmoreira <bmoreira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 16:44:18 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/05 15:58:14 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 19:10:15 by bmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_isascii(int c);
 int		ft_isdigit(int ch);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
+char	**ft_matrix_dup(char **matrix);
 void	*ft_memchr(const void *pointer, int value, size_t count);
 int		ft_memcmp(void *pointer1, void *pointer2, size_t size);
 void	*ft_memcpy(void *s1, const void *s2, size_t n);

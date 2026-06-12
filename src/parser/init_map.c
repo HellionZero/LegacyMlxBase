@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: barbara.drummond <barbara.drummond@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:44:56 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/05 17:27:34 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 23:31:18 by barbara.dru      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,27 @@ static int	search_player_char(t_map *map, t_icoord *pos)
 	return (0);
 }
 
-static void	set_player_from_char(t_game *game, t_icoord pos)
+static void	set_player_from_char(t_map *map, t_icoord pos)
 {
 	char	orientation_char;
 
-	orientation_char = game->map->grid[pos.y][pos.x];
-	game->player->pos.x = pos.x;
-	game->player->pos.y = pos.y;
-	game->player->angle = set_start_angle(orientation_char);
+	orientation_char = map->grid[pos.y][pos.x];
+	map->player->pos.x = pos.x;
+	map->player->pos.y = pos.y;
+	map->player->angle = set_start_angle(orientation_char);
 }
 
-static void	set_elements_position(t_game *game)
+void	init_player_from_grid(t_map *map)
 {
 	t_icoord	pos;
 
-	if (!game->player || !game->map || !game->map->grid)
+	if (!map || !map->player || !map->grid)
 		return ;
-	if (search_player_char(game->map, &pos))
-		set_player_from_char(game, pos);
+	if (search_player_char(map, &pos))
+		set_player_from_char(map, pos);
 }
 
-void	load_map_textures_and_player(t_game *game)
+void	load_map_textures(t_game *game)
 {
 	if (!game || !game->map || !game->window)
 		return ;
@@ -71,5 +71,4 @@ void	load_map_textures_and_player(t_game *game)
 	if (game->map->east_path)
 		game->map->east_texture = load_texture(game->window->mlx_ptr,
 				game->map->east_path);
-	set_elements_position(game);
 }

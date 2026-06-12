@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: barbara.drummond <barbara.drummond@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/17 15:19:29 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/07 17:42:58 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 23:26:51 by barbara.dru      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
+#include <stdio.h>
 
 static int	update_input_render(t_game *game)
 {
 	if (game->input.left)
-		handle_arrow_press(KEY_LEFT, game->player, game);
+		handle_arrow_press(KEY_LEFT, game->map->player, game);
 	if (game->input.right)
-		handle_arrow_press(KEY_RIGHT, game->player, game);
+		handle_arrow_press(KEY_RIGHT, game->map->player, game);
 	if (game->input.w)
-		set_directional_movement(KEY_W, game->player, game);
+		set_directional_movement(KEY_W, game->map->player, game);
 	if (game->input.s)
-		set_directional_movement(KEY_S, game->player, game);
+		set_directional_movement(KEY_S, game->map->player, game);
 	if (game->input.a)
-		set_directional_movement(KEY_A, game->player, game);
+		set_directional_movement(KEY_A, game->map->player, game);
 	if (game->input.d)
-		set_directional_movement(KEY_D, game->player, game);
+		set_directional_movement(KEY_D, game->map->player, game);
 	return (0);
 }
 
@@ -33,7 +34,6 @@ int	render(void *param)
 {
 	t_game		*game;
 	t_data		*data;
-	static int	frame = 0;
 
 	game = (t_game *)param;
 	update_timer(&game->timer);
@@ -52,6 +52,5 @@ int	render(void *param)
 	else
 		cast_ray(game, data);
 	render_frame(data, game->window->mlx_ptr, game->window->win_ptr);
-	frame++;
 	return (0);
 }

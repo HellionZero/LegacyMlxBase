@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmoreira <bmoreira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 15:36:36 by bmoreira          #+#    #+#             */
-/*   Updated: 2026/05/05 16:34:40 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 19:20:02 by bmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	free_map(t_map *map)
 		free(map->east_path);
 	if (map->grid)
 		ft_free_split(map->grid);
+	if (map->player)
+		destroy_player(map->player);
 	free(map);
 }
 
@@ -44,5 +46,7 @@ void	error_handler(t_map *map, char **split, int exit_code)
 			"It must contain two space separated values: [ID] [PATH/COLOR]\n");
 	else if (exit_code == JOIN_CONTENT)
 		printf("Error joining content with current buffer.\n");
+	else if (exit_code == INVALID_GRID)
+		printf("Invalid grid for map provided.\n");
 	exit (1);
 }

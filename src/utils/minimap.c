@@ -54,9 +54,9 @@ static void	initialize_minimap_data(t_minimap *minimap, t_game *game)
 	minimap->offset = (t_icoord){0, 0};
 	minimap->scale = 20.0f;
 	minimap->ref_map = game->map;
-	if (game->player)
-		minimap->player_pos = (t_icoord){(int)(game->player->pos.x + 0.5),
-			(int)(game->player->pos.y + 0.5)};
+	if (game->map && game->map->player)
+		minimap->player_pos = (t_icoord){(int)(game->map->player->pos.x + 0.5),
+			(int)(game->map->player->pos.y + 0.5)};
 }
 
 t_minimap	*create_minimap(t_game *game)

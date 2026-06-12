@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_parser.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bmoreira <bmoreira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 20:17:59 by bmoreira          #+#    #+#             */
-/*   Updated: 2026/05/07 15:56:28 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 19:57:26 by bmoreira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ enum e_exit_code
 	INVALID_ELEMENT,
 	INVALID_COLOR,
 	JOIN_CONTENT,
-}	;
+	INVALID_GRID,
+};
 
 /* PARSER BASIC FUNCTIONS */
 
@@ -53,6 +54,9 @@ void	parse_grid(t_map *map, int fd, char *line);
 /*set the initial values for the map struct */
 t_map	*init_map(void);
 
+/* initialize player position based on the map grid */
+void	init_player_from_grid(t_map *map);
+
 /* -------------helper functions for parsing ----------------*/
 
 /* verify if the character is an orientation character (N, S, E, W) */
@@ -66,5 +70,8 @@ float	set_start_angle(char orientation);
 the grid as a 2D array of strings parsed as the grid */
 int		count_map_rows(char **grid);
 int		count_map_columns(char **grid);
+
+/* validate if the grid is closed by walls using flood fill */
+void	validate_grid(t_map *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 19:35:12 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/09 17:44:28 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:32:30 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,10 @@ void	set_minimap_addresses(t_data *main_buffer, t_minimap *mmap,
 
 void	render_player_and_ray(t_game *game, t_minimap *minimap)
 {
-	if (game->player->pos.x >= 0 && game->player->pos.y >= 0)
+	if (game->map->player->pos.x >= 0 && game->map->player->pos.y >= 0)
 	{
 		draw_player_on_minimap(minimap, game);
-		render_first_ray(game->player, minimap, &game->ray);
+		render_first_ray(game->map->player, minimap, &game->ray);
+		draw_fov_rays(game->map->player, minimap, minimap->buffer);
 	}
 }
-/* additionally you can use draw_fov_rays under the 
-render_first_ray function to view the field of view
-rays for debugging. */

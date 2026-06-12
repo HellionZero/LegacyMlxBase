@@ -6,28 +6,21 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:07:25 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/09 17:25:55 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 19:02:40 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub.h"
 
-/**
- * auxiliary function to find the first wall hit by the ray.
- * 
- * Is needed to keep tha main trace ray function clean
- * and focused on the overall ray checking process, 
- * while this function handles the specific logic 
- * of stepping through the grid an checking for wall hits, 
- * ensuring efficient and organized code flow.
- * @param dda The DDA structure containing the ray information
- * @param map The minimap structure containing the grid and its dimensions
- */
 static void	find_wall_hit(t_dda *dda, t_minimap *map)
 {
+	int		iterations;
+
 	dda->hit = 0;
-	while (!dda->hit)
+	iterations = 0;
+	while (!dda->hit && iterations < 1000)
 	{
+		iterations++;
 		update_ray_step(dda);
 		if (!check_bounds(dda, map))
 			break ;
@@ -50,7 +43,8 @@ void	trace_ray(t_ray *ray, t_minimap *map, t_dcoord *hit_point)
 	dda.hit = 0;
 	calc_side_dist(&dda, ray->fpos);
 	find_wall_hit(&dda, map);
-	if (map->ref_map->grid[dda.rmap.y][dda.rmap.x] == '1')
+	if (check_bounds(&dda, map)
+		&& map->ref_map->grid[dda.rmap.y][dda.rmap.x] == '1')
 		update_ray_hit_data(ray, &dda, hit_point);
 	else
 	{

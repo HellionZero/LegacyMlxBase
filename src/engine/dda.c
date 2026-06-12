@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 19:58:30 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/09 16:18:39 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 18:57:11 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	init_dda_variables(t_ray *ray, t_dcoord *rd,
 	rmap->x = (int)floor(ray->fpos.x);
 	rmap->y = (int)floor(ray->fpos.y);
 	if (rd->x == 0.0)
-		delta_dist->x = 1e-30;
+		delta_dist->x = 1e10;
 	else
 		delta_dist->x = fabs(1.0 / rd->x);
 	if (rd->y == 0.0)
-		delta_dist->y = 1e-30;
+		delta_dist->y = 1e10;
 	else
 		delta_dist->y = fabs(1.0 / rd->y);
 }

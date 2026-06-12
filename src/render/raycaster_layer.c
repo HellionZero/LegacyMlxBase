@@ -57,8 +57,8 @@ void	cast_ray(t_game *game, t_data *data)
 	if (!game || !data)
 		return ;
 	game->ray.data = data;
-	game->ray.player = game->player;
-	init_camera(&camera, game->player);
+	game->ray.player = game->map->player;
+	init_camera(&camera, game->map->player);
 	while (x < data->width)
 	{
 		cast_single_column(game, data, &camera, x++);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_layer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: barbara.drummond <barbara.drummond@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:20:34 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/05 17:35:54 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 23:27:27 by barbara.dru      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	draw_player_on_minimap(t_minimap *minimap, t_game *game)
 	t_dcoord	p;
 	int			width_px;
 
-	if (!minimap || !game || !game->player)
+	if (!minimap || !game || !game->map || !game->map->player)
 		return ;
-	p.x = game->player->pos.x * minimap->scale;
-	p.y = game->player->pos.y * minimap->scale;
-	width_px = (int)roundf(game->player->collision_radius * 2.0f
+	p.x = game->map->player->pos.x * minimap->scale;
+	p.y = game->map->player->pos.y * minimap->scale;
+	width_px = (int)roundf(game->map->player->collision_radius * 2.0f
 			* minimap->scale);
 	tile_dim.width = width_px;
 	tile_dim.height = width_px;
@@ -64,7 +64,8 @@ static void	setup_minimap_render(t_minimap *minimap, t_game *game)
 void	render_minimap(t_minimap *minimap, t_game *game)
 {
 	if (!minimap || !minimap->buffer || !minimap->ref_map
-		|| !minimap->ref_map->grid || !game || !game->player)
+		|| !minimap->ref_map->grid || !game || !game->map
+		|| !game->map->player)
 		return ;
 	setup_minimap_render(minimap, game);
 	draw_minimap_grid(minimap);
@@ -75,10 +76,8 @@ void	composite_minimap_to_main(t_data *main_buffer, t_minimap *mmap)
 {
 	t_icoord	pos;
 	t_icoord	dst;
-	int			pixel_count;
 
 	pos.y = 0;
-	pixel_count = 0;
 	while (pos.y < mmap->buffer->height)
 	{
 		pos.x = 0;
@@ -88,10 +87,7 @@ void	composite_minimap_to_main(t_data *main_buffer, t_minimap *mmap)
 			dst.y = mmap->pos.y + pos.y;
 			if (dst.x >= 0 && dst.x < main_buffer->width
 				&& dst.y >= 0 && dst.y < main_buffer->height)
-			{
 				set_minimap_addresses(main_buffer, mmap, &pos, &dst);
-				pixel_count++;
-			}
 			pos.x++;
 		}
 		pos.y++;

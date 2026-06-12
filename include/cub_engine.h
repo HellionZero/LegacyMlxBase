@@ -6,7 +6,7 @@
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:56:15 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/09 17:42:34 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/11 16:00:56 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,7 +279,7 @@ void			draw_fov_rays(t_player *player, t_minimap *map,
  * cross a grid line.
  * 
  * If the ray direction component is zero, 
- * it set the delta_dist to a very large value (1e-30, or infinity)
+ * it set the delta_dist to a very large value (1e-10, or infinity)
  * to avoid division by zero and ensure that the ray will step in the
  * other direction.
  * @param ray The ray structure containing the starting position and direction.

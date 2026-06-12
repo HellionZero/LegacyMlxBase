@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   minimap_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsarraci <lsarraci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 16:34:14 by lsarraci          #+#    #+#             */
-/*   Updated: 2026/05/07 17:25:09 by lsarraci         ###   ########.fr       */
+/*   Updated: 2026/05/09 19:13:13 by lsarraci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ float	set_start_angle(char orientation)
 {
 	float	angle;
 
+	angle = 0;
 	if (orientation == 'N')
 		angle = 3 * PI / 2;
 	else if (orientation == 'S')
@@ -24,8 +25,6 @@ float	set_start_angle(char orientation)
 		angle = 0;
 	else if (orientation == 'W')
 		angle = PI;
-	else
-		angle = 0;
 	return (angle);
 }
 

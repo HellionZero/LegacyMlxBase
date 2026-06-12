@@ -39,7 +39,7 @@ void		close_window(void *param);
 void		setup_hooks(void *param);
 void		free_game(t_game *game);
 void		init_game(t_game *game, char **argv);
-void		load_map_textures_and_player(t_game *game);
+void		load_map_textures(t_game *game);
 void		init_timer(t_timer *timer);
 void		update_timer(t_timer *timer);
 
